@@ -1,0 +1,20 @@
+<html>
+<head>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>
+		var socket = io.connect('/');
+
+		socket.on("add_img", function(data) {
+			$("#request_img").html(data);
+		});
+	</script>
+</head>
+
+<body>
+	<br>
+	<p style="text-align:center; font-family: Arial, Helvetica, sans-serif; font-weight:bold">The following image was just requested: <br>
+		<span id="request_img" style="font-size:90px; font-weight: bold; color: navy"></span>
+	</p>
+</body>
+</html>

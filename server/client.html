@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script>
+			var socket = io.connect("/");
+
+			socket.on("add_img", function(data) {
+				$("#request_img").html(data);
+			});
+		</script>
+	</head>
+
+	<body>
+		<p>The following image was just requested: <div id="request_img"></div></p>
+	</body>
+</html>
