@@ -65,7 +65,7 @@ public class MainActivity extends Activity implements IOCallback {
 	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 	            //Toast.makeText(MainActivity.this, "Go to gallery 10" , Toast.LENGTH_SHORT).show();
 	            
-	        	//adapter.remove(position);
+	        	//adapter.remove(position); bla
 	        	//adapter.notifyDataSetChanged();
 	        	
 	        	gridview.removeViewAt(position);
