@@ -8,8 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.example.hellogridview.R;
-
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
     
@@ -62,12 +60,11 @@ public class ImageAdapter extends BaseAdapter {
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
-        System.out.println("HELLO");
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(100, 100));
+            imageView.setLayoutParams(new GridView.LayoutParams(130, 130));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(2, 2, 2, 2);
+            imageView.setPadding(8, 8, 8, 8);
         } else {
             imageView = (ImageView) convertView;
         }
