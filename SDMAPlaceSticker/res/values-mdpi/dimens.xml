@@ -2,8 +2,8 @@
 
 <resources>
 
-    <dimen name="image_thumbnail_size">100dp</dimen>
-    <dimen name="image_thumbnail_spacing">1dp</dimen>
+    <dimen name="thumb_size">10072dp</dimen>
+    <dimen name="margins">9dp</dimen>
     <dimen name="image_detail_pager_margin">80dp</dimen>
 
 </resources>

@@ -12,8 +12,14 @@ public final class R {
     }
     public static final class dimen {
         public static final int image_detail_pager_margin=0x7f040002;
-        public static final int image_thumbnail_size=0x7f040000;
-        public static final int image_thumbnail_spacing=0x7f040001;
+        public static final int image_thumbnail_size=0x7f040003;
+        public static final int image_thumbnail_spacing=0x7f040004;
+        public static final int leftPad=0x7f040007;
+        public static final int margins=0x7f040001;
+        public static final int marginslr=0x7f040005;
+        public static final int marginstb=0x7f040006;
+        public static final int thumb_size=0x7f040000;
+        public static final int topPad=0x7f040008;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
@@ -45,8 +51,7 @@ public final class R {
     }
     public static final class id {
         public static final int gridlayout=0x7f080000;
-        public static final int gridview=0x7f080001;
-        public static final int menu_settings=0x7f080002;
+        public static final int menu_settings=0x7f080001;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -116,9 +121,20 @@ public final class R {
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         
+
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    
+
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        
          */
         public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 
+ All customizations that are NOT specific to a particular API-level can go here. 
+ Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 

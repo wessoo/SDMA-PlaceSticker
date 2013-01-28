@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import android.animation.LayoutTransition;
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -32,9 +33,14 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements IOCallback {
 	SocketIO socket;
-	ViewGroup container = null;	
-	private String imgNum = "0";
+	private int imgNum = 0;
 	private ArrayList<Integer> thumbIDs;
+	private ArrayList<Integer> addedIDs;
+	private float scale;
+	private float THUMB_SIZE;
+	private float MARGINSLR;
+	private float MARGINSTB;
+	Resources res;
 	GridLayout gridlayout;
 	
 	private final Handler myHandler = new Handler();
@@ -49,7 +55,8 @@ public class MainActivity extends Activity implements IOCallback {
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_main);
 	    
-	    thumbIDs = new ArrayList<Integer>();        
+	    thumbIDs = new ArrayList<Integer>();
+	    addedIDs = new ArrayList<Integer>();
         thumbIDs.add(R.drawable.img_1);
         thumbIDs.add(R.drawable.img_2);
         thumbIDs.add(R.drawable.img_3);
@@ -75,19 +82,13 @@ public class MainActivity extends Activity implements IOCallback {
         thumbIDs.add(R.drawable.img_23);
         thumbIDs.add(R.drawable.img_24);
         thumbIDs.add(R.drawable.img_25);
-        
-	    //container = (Grid)
-	    //final LayoutTransition transitioner = new LayoutTransition();
-	    //Animation animation = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
-	    //final GridLayoutAnimationController animationController = new GridLayoutAnimationController(animation);
-	    //final ImageAdapter adapter = new ImageAdapter(this);
-        
-        Log.i("Test", "Running");
 	    
 	    gridlayout = (GridLayout) findViewById(R.id.gridlayout);
-	    //gridview.setLayoutAnimation(animationController);
-	    //gridview.setLayoutTransition(transitioner);
-	    //gridview.setAdapter(adapter);
+	    scale = getResources().getDisplayMetrics().density;
+	    res = getResources();
+	    THUMB_SIZE = res.getDimension(R.dimen.thumb_size);
+	    MARGINSLR = res.getDimension(R.dimen.marginslr);
+	    MARGINSTB = res.getDimension(R.dimen.marginstb);
 	    
 	    try {
         	Log.i("Pre-socket", "Attemping socket");
@@ -108,24 +109,36 @@ public class MainActivity extends Activity implements IOCallback {
 	}
 	
 	public void updateUI() {		
-		
-        GridLayout.LayoutParams layoutparams = new GridLayout.LayoutParams();
-        layoutparams.setMargins(5, 5, 5, 5);
-        
-        ImageView imageView = new ImageView(this);        
-        imageView.setAdjustViewBounds(true);
-        imageView.setMaxWidth(115);
-        imageView.setMaxHeight(115);
-        imageView.setLayoutParams(layoutparams);
-        imageView.setImageResource(thumbIDs.get(Integer.parseInt(imgNum) - 1));
-        imageView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	gridlayout.removeView(v);
-            }
-        });
-        gridlayout.addView(imageView, Math.min(1, gridlayout.getChildCount()));
+		//if(!addedIDs.contains(imgNum)) {			
+	        addedIDs.add(imgNum);
+			GridLayout.LayoutParams layoutparams = new GridLayout.LayoutParams();
+	        layoutparams.setMargins((int)MARGINSLR, (int)MARGINSTB, (int)MARGINSLR, (int)MARGINSTB);
+	        
+	        ImageView imageView = new ImageView(this);
+	        imageView.setId(imgNum);
+	        imageView.setAdjustViewBounds(true);
+	        imageView.setMaxWidth((int)THUMB_SIZE);
+	        imageView.setMaxHeight((int)THUMB_SIZE);
+	        imageView.setLayoutParams(layoutparams);
+	        imageView.setImageResource(thumbIDs.get(imgNum - 1));
+	        imageView.setOnClickListener(new View.OnClickListener() {
+	            public void onClick(View v) {
+	            	gridlayout.removeView(v);
+	            	addedIDs.remove(addedIDs.indexOf(v.getId()));
+	            }
+	        });
+	        //gridlayout.addView(imageView, Math.min(1, gridlayout.getChildCount()));
+	        gridlayout.addView(imageView, gridlayout.getChildCount());
+		/*} else {
+			Toast.makeText(MainActivity.this, "You have this image already" , Toast.LENGTH_SHORT).show();
+		}*/
     }
 	
+	private int dpToPx(float dp) {
+		return (int) (dp * scale + 0.5f);
+	}
+	
+	/* SOCKET-IO INHERITED METHODS */	
 	@Override
 	public void onMessage(JSONObject json, IOAcknowledge ack) {
 		try {
@@ -158,18 +171,8 @@ public class MainActivity extends Activity implements IOCallback {
 
 	@Override
 	public void on(String event, IOAcknowledge ack, Object... args) {
-		imgNum = (String) args[0];
-		//imgNum = Integer.parseInt((String) args[0]);
-		//System.out.println("Server triggered event '" + event + "'");
-		
-		Log.i("TestApp", imgNum);				
-		myHandler.post(updateRunnable);
-		
-		//Add a thumbnail to Grid
-		
-		
-        
-		//Toast.makeText(MainActivity.this, "Got image " + imgNum , Toast.LENGTH_SHORT).show();
+		imgNum = Integer.parseInt((String) args[0]);
+		myHandler.post(updateRunnable);		
 	}
 
 }
