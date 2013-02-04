@@ -206,7 +206,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
     };
     
 	public void updateUI() {		
-		if(syncTable) {
+		
 		//if(!addedIDs.contains(imgNum)) {			
 	        addedIDs.add(imgNum);
 			GridLayout.LayoutParams layoutparams = new GridLayout.LayoutParams();
@@ -230,11 +230,14 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		/*} else {
 			Toast.makeText(MainActivity.this, "You have this image already" , Toast.LENGTH_SHORT).show();
 		}*/
-		}
     }
 	
 	private int dpToPx(float dp) {
 		return (int) (dp * scale + 0.5f);
+	}
+	
+	private void thumbApproached(int index) {
+		
 	}
 	
 	/* SOCKET-IO INHERITED METHODS */	
@@ -270,8 +273,10 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 
 	@Override
 	public void on(String event, IOAcknowledge ack, Object... args) {
-		imgNum = Integer.parseInt((String) args[0]);
-		myHandler.post(updateRunnable);		
+		if(syncTable) {
+			imgNum = Integer.parseInt((String) args[0]);
+			myHandler.post(updateRunnable);
+		}
 	}
 	
 	/* PLACESTICKER INHERITED METHODS */
@@ -285,6 +290,8 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 				Toast.makeText(MainActivity.this, "Synced with touchtable", Toast.LENGTH_SHORT).show();
 				linearlayout.setBackgroundColor(Color.LTGRAY);
 				syncTable = true;
+			} else { //By an artwork
+				
 			}
 			
 		}else{ //Not by the table
