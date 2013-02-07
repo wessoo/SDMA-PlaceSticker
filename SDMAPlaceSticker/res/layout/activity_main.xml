@@ -22,24 +22,14 @@
 			android:numColumns="auto_fit"
 			android:columnCount="4"
 			android:stretchMode="columnWidth"
-			android:animateLayoutChanges="true" >
-		
-			<!-- <ImageView
-	            android:src="@drawable/img_1"
-	            android:adjustViewBounds="true"
-	            android:maxWidth="100dip"
-	            android:maxHeight="100dip"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content" /> -->
-		    
+			android:animateLayoutChanges="true" >		    
 		</GridLayout>
 	</ScrollView>
 	
-	<Button
+	<!-- <Button
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:text="Clear"
-	/>
-	
+	/> -->	
 	
 </LinearLayout>

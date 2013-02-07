@@ -16,8 +16,9 @@ import jp.co.isid.placesticker.lib.Exception.PlaceStickerException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.app.Activity;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.wifi.WifiManager;
@@ -26,6 +27,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,6 +41,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	private WifiManager wifiManager;
 	private ArrayList<Integer> thumbIDs;
 	private ArrayList<Integer> addedIDs;
+	private ArrayList<ImageView> addedThumbs;
 	private int imgNum = 0;
 	private boolean syncTable = false;
 	private float scale;
@@ -56,6 +60,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_main);
 	    
+	    addedThumbs = new ArrayList<ImageView>();
 	    thumbIDs = new ArrayList<Integer>();
         thumbIDs.add(R.drawable.img_1);
         thumbIDs.add(R.drawable.img_2);
@@ -93,6 +98,8 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	    linearlayout = (LinearLayout) findViewById(R.id.linearlayout);
 	    linearlayout.setBackgroundColor(Color.DKGRAY);
 	    scrollview= (ScrollView) findViewById(R.id.scrollview);
+	    //gridlayout.setBackgroundColor(Color.BLACK);
+	    gridlayout.bringToFront();
 	    
 	    scale = getResources().getDisplayMetrics().density;
 	    res = getResources();
@@ -135,11 +142,13 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		            public void onClick(View v) {
 		            	gridlayout.removeView(v);
 		            	addedIDs.remove(addedIDs.indexOf(v.getId()));
+		            	addedThumbs.remove(v);
 		            }
 		        });
 		        System.out.println("FLAG4");
 		        
 		        gridlayout.addView(imageView, gridlayout.getChildCount());
+		        addedThumbs.add(imageView); //add thumbnail to arraylist
 	    	}
 	    	
 	    } else { //Else images haven't been added
@@ -160,7 +169,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_main, menu);
+		//getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
 	
@@ -209,6 +218,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		
 		//if(!addedIDs.contains(imgNum)) {			
 	        addedIDs.add(imgNum);
+	        
 			GridLayout.LayoutParams layoutparams = new GridLayout.LayoutParams();
 	        layoutparams.setMargins((int)MARGINSLR, (int)MARGINSTB, (int)MARGINSLR, (int)MARGINSTB);
 	        
@@ -223,10 +233,12 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	            public void onClick(View v) {
 	            	gridlayout.removeView(v);
 	            	addedIDs.remove(addedIDs.indexOf(v.getId()));
+	            	addedThumbs.remove(v);
 	            }
 	        });
-	        //gridlayout.addView(imageView, Math.min(1, gridlayout.getChildCount()));
+	        
 	        gridlayout.addView(imageView, gridlayout.getChildCount());
+	        addedThumbs.add(imageView); //add thumbnail to arraylist
 		/*} else {
 			Toast.makeText(MainActivity.this, "You have this image already" , Toast.LENGTH_SHORT).show();
 		}*/
@@ -236,7 +248,15 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		return (int) (dp * scale + 0.5f);
 	}
 	
-	private void thumbApproached(int index) {
+	private void approachedWork(int index) {
+		ImageView approached_img = addedThumbs.get(addedIDs.indexOf(index));
+		Animation thumbGrow = AnimationUtils.loadAnimation(this, R.anim.thumb_grow);
+		approached_img.bringToFront();
+		approached_img.startAnimation(thumbGrow);
+		
+		/*AnimatorSet animSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.thumbgrow);
+		animSet.setTarget(addedThumbs.get(addedIDs.indexOf(index)));
+		animSet.start();*/
 		
 	}
 	
@@ -282,7 +302,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	/* PLACESTICKER INHERITED METHODS */
 	@Override
 	public void onPositionChanged(DevicePosition position, int style) {
-		if(position != null){
+		if(position != null){ //near a PlaceSticker
 			String psID = position.getNearestPlaceSticker().getId();
 			int psDistance = position.getNearestPlaceSticker().getDistance();
 			
@@ -290,11 +310,16 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 				Toast.makeText(MainActivity.this, "Synced with touchtable", Toast.LENGTH_SHORT).show();
 				linearlayout.setBackgroundColor(Color.LTGRAY);
 				syncTable = true;
-			} else { //By an artwork
-				
+			} else if(psID.compareTo("table") != 0) { //By an artwork
+				if(addedIDs.contains(Integer.parseInt(psID))) {
+					approachedWork(Integer.parseInt(psID));
+				}
+				//Toast.makeText(MainActivity.this, "Approached image " + psID, Toast.LENGTH_SHORT).show();
+				linearlayout.setBackgroundColor(Color.DKGRAY);
+				syncTable = false;
 			}
 			
-		}else{ //Not by the table
+		}else{ //Not by a table
 			//sampleView.setText("Not in Range");
 			syncTable = false;
 			linearlayout.setBackgroundColor(Color.DKGRAY);

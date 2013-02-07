@@ -1,5 +1,5 @@
 ﻿<config>
-	<placesticker id="table" name="030PlaceSticker" x="80" y ="20" floor="1F" />
+	<placesticker id="table" name="050PlaceSticker" x="80" y ="20" floor="1F" />
 	<placesticker id="1" name="033PlaceSticker" x="180" y ="20" floor="1F" />
 	<placesticker id="2" name="037PlaceSticker" x="180" y ="120" floor="1F" />
 	<placesticker id="3" name="038PlaceSticker" x="80" y ="120" floor="1F" />
