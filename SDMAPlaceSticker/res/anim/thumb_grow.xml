@@ -10,7 +10,7 @@
         android:duration="400"
         android:repeatMode="reverse"
         android:repeatCount="4" />
-	<set xmlns:android="http://schemas.android.com/apk/res/android"
+	<!-- <set xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:ordering="together" >
 		<scale
 		    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
@@ -27,5 +27,5 @@
 		    android:toAlpha="0.0"
 		    android:startOffset="1600"
 		    android:duration="300" />
-	</set>
+	</set> -->
 </set>

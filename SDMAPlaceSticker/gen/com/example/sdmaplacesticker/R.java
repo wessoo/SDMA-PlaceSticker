@@ -56,17 +56,20 @@ public final class R {
     public static final class id {
         public static final int gridlayout=0x7f0b0002;
         public static final int linearlayout=0x7f0b0000;
-        public static final int menu_settings=0x7f0b0003;
+        public static final int menu_settings=0x7f0b0004;
         public static final int scrollview=0x7f0b0001;
+        public static final int texty=0x7f0b0003;
     }
     public static final class integer {
         public static final int num_columns=0x7f070000;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int activity_metadata=0x7f030001;
     }
     public static final class menu {
         public static final int activity_main=0x7f0a0000;
+        public static final int activity_metadata=0x7f0a0001;
     }
     public static final class raw {
         public static final int config=0x7f050000;
@@ -75,6 +78,7 @@ public final class R {
         public static final int app_name=0x7f080000;
         public static final int hello_world=0x7f080001;
         public static final int menu_settings=0x7f080002;
+        public static final int title_activity_metadata=0x7f080003;
     }
     public static final class style {
         /** 

@@ -16,14 +16,14 @@ import jp.co.isid.placesticker.lib.Exception.PlaceStickerException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -39,19 +39,24 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	private SocketIO socket;
 	private PlaceStickerReceiver receiver;
 	private WifiManager wifiManager;
+	
+	public final static String IMG_INDEX = "com.example.sdmaplacesticker.INDEX";
+	
 	private ArrayList<Integer> thumbIDs;
 	private ArrayList<Integer> addedIDs;
 	private ArrayList<ImageView> addedThumbs;
 	private int imgNum = 0;
+	private int approached_index = 0;
 	private boolean syncTable = false;
 	private float scale;
 	private float THUMB_SIZE;
 	private float MARGINSLR;
 	private float MARGINSTB;
-	Resources res;
-	GridLayout gridlayout;
-	LinearLayout linearlayout;
-	ScrollView scrollview;
+	private Resources res;
+	private GridLayout gridlayout;
+	private LinearLayout linearlayout;
+	private ScrollView scrollview;
+	private Vibrator vibrator;
 	
 	private final Handler myHandler = new Handler();
     
@@ -103,6 +108,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	    
 	    scale = getResources().getDisplayMetrics().density;
 	    res = getResources();
+	    vibrator = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
 	    
 	    //Prepare PlaceSticker receiver
 	    receiver = new PlaceStickerReceiver(this);
@@ -195,7 +201,6 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		
         try {
         	receiver.loadSettingFile(R.raw.config);
-        	
 			receiver.scanStart();
 		} catch (PlaceStickerException e) {
 			e.printStackTrace();
@@ -249,38 +254,43 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	}
 	
 	private void approachedWork(int index) {
+		approached_index = index;
 		ImageView approached_img = addedThumbs.get(addedIDs.indexOf(index));
 		Animation thumbGrow = AnimationUtils.loadAnimation(this, R.anim.thumb_grow);
 		approached_img.bringToFront();
 		approached_img.startAnimation(thumbGrow);
 		
-		thumbGrow.setAnimationListener(new Animation.AnimationListener() {
-			
-			@Override
-			public void onAnimationStart(Animation animation) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onAnimationRepeat(Animation animation) {
-				// TODO Auto-generated method stub
-								
-			}
-			
-			@Override
-			public void onAnimationEnd(Animation animation) {
-				// TODO Auto-generated method stub
-				//Toast.makeText(MainActivity.this, "TADA!", Toast.LENGTH_SHORT).show();
-				
-			}
-		});
+		thumbGrow.setAnimationListener(anim_listener);
 		
 		/*AnimatorSet animSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.thumbgrow);
 		animSet.setTarget(addedThumbs.get(addedIDs.indexOf(index)));
 		animSet.start();*/
 		
 	}
+	
+	Animation.AnimationListener anim_listener = new Animation.AnimationListener() {
+		
+		@Override
+		public void onAnimationStart(Animation animation) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void onAnimationRepeat(Animation animation) {
+			// TODO Auto-generated method stub
+							
+		}
+		
+		@Override
+		public void onAnimationEnd(Animation animation) {
+			// TODO Auto-generated method stub
+			vibrator.vibrate(200);		
+			Intent intent = new Intent(MainActivity.this, MetadataActivity.class);
+			intent.putExtra(IMG_INDEX, approached_index);
+			startActivity(intent);
+		}
+	};
 	
 	/* SOCKET-IO INHERITED METHODS */	
 	@Override
