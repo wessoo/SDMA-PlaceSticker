@@ -254,6 +254,28 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		approached_img.bringToFront();
 		approached_img.startAnimation(thumbGrow);
 		
+		thumbGrow.setAnimationListener(new Animation.AnimationListener() {
+			
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+								
+			}
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// TODO Auto-generated method stub
+				//Toast.makeText(MainActivity.this, "TADA!", Toast.LENGTH_SHORT).show();
+				
+			}
+		});
+		
 		/*AnimatorSet animSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.thumbgrow);
 		animSet.setTarget(addedThumbs.get(addedIDs.indexOf(index)));
 		animSet.start();*/
@@ -293,10 +315,10 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 
 	@Override
 	public void on(String event, IOAcknowledge ack, Object... args) {
-		if(syncTable) {
+		//if(syncTable) {
 			imgNum = Integer.parseInt((String) args[0]);
 			myHandler.post(updateRunnable);
-		}
+		//}
 	}
 	
 	/* PLACESTICKER INHERITED METHODS */
