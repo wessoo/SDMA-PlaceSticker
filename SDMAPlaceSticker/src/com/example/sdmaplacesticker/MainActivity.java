@@ -221,7 +221,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
     
 	public void updateUI() {		
 		
-		//if(!addedIDs.contains(imgNum)) {			
+		if(!addedIDs.contains(imgNum)) {			
 	        addedIDs.add(imgNum);
 	        
 			GridLayout.LayoutParams layoutparams = new GridLayout.LayoutParams();
@@ -244,9 +244,9 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	        
 	        gridlayout.addView(imageView, gridlayout.getChildCount());
 	        addedThumbs.add(imageView); //add thumbnail to arraylist
-		/*} else {
+		} else {
 			Toast.makeText(MainActivity.this, "You have this image already" , Toast.LENGTH_SHORT).show();
-		}*/
+		}
     }
 	
 	private int dpToPx(float dp) {
@@ -259,13 +259,8 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		Animation thumbGrow = AnimationUtils.loadAnimation(this, R.anim.thumb_grow);
 		approached_img.bringToFront();
 		approached_img.startAnimation(thumbGrow);
-		
-		thumbGrow.setAnimationListener(anim_listener);
-		
-		/*AnimatorSet animSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.anim.thumbgrow);
-		animSet.setTarget(addedThumbs.get(addedIDs.indexOf(index)));
-		animSet.start();*/
-		
+		vibrator.vibrate(200);
+		thumbGrow.setAnimationListener(anim_listener);		
 	}
 	
 	Animation.AnimationListener anim_listener = new Animation.AnimationListener() {
@@ -284,8 +279,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		
 		@Override
 		public void onAnimationEnd(Animation animation) {
-			// TODO Auto-generated method stub
-			vibrator.vibrate(200);		
+			// TODO Auto-generated method stub	
 			Intent intent = new Intent(MainActivity.this, MetadataActivity.class);
 			intent.putExtra(IMG_INDEX, approached_index);
 			startActivity(intent);
@@ -325,10 +319,11 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 
 	@Override
 	public void on(String event, IOAcknowledge ack, Object... args) {
-		//if(syncTable) {
+		if(syncTable) {
 			imgNum = Integer.parseInt((String) args[0]);
-			myHandler.post(updateRunnable);
-		//}
+			if(imgNum <= 25 && imgNum >= 1)
+				myHandler.post(updateRunnable);
+		}
 	}
 	
 	/* PLACESTICKER INHERITED METHODS */

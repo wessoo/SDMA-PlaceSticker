@@ -14,13 +14,15 @@ public class MetadataActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_metadata);
-		//overridePendingTransition(R.anim.pull);
+		overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
 		// Show the Up button in the action bar.
 		//getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		//Get message from intent
 		Intent intent = getIntent();
 		int approached_index = intent.getIntExtra(MainActivity.IMG_INDEX, 0);
+		
+		//Handle XML
 		
 		TextView textview = (TextView) findViewById(R.id.texty);
 		textview.setTextSize(20);
