@@ -319,11 +319,11 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 
 	@Override
 	public void on(String event, IOAcknowledge ack, Object... args) {
-		if(syncTable) {
+		//if(syncTable) {
 			imgNum = Integer.parseInt((String) args[0]);
 			if(imgNum <= 25 && imgNum >= 1)
 				myHandler.post(updateRunnable);
-		}
+		//}
 	}
 	
 	/* PLACESTICKER INHERITED METHODS */
