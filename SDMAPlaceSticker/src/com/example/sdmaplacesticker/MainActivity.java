@@ -17,6 +17,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -24,6 +27,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -161,7 +165,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	    	addedIDs = new ArrayList<Integer>();
 	    }
 	    
-	    try {
+	    /*try {
         	Log.i("Pre-socket", "Attemping socket");
         	socket = new SocketIO();
         	Log.i("Pre-connect", "Attemping connect");
@@ -169,7 +173,20 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
         } catch (MalformedURLException e) {
         	Log.e("MalformedURL", "Malformed URL exception");
         	e.printStackTrace();
-        }
+        }*/
+	    
+	    //Test notifcation
+	    /*NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+	    
+	    Intent intent = new Intent(this, MetadataActivity.class);
+	    intent.putExtra(IMG_INDEX, approached_index);
+	    PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+	    // Build notification
+	    Notification notification = new Notification.Builder(this);
+	    
+
+	    notificationManager.notify(0, notification);*/
 	}
 
 	@Override

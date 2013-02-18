@@ -15,7 +15,6 @@ public class Work {
 	}
 	
 	public void setTitle(String title) {
-		System.out.println("FLAG HELLO");
 		this.title.add(title);
 	}
 	

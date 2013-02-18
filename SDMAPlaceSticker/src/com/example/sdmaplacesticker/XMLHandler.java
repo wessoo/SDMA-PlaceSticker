@@ -19,7 +19,6 @@ public class XMLHandler extends DefaultHandler {
 	
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) {
-		System.out.println("start element");
 		parsing = true;
 		
 		if(localName.equals("metadata")) {
