@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-
-    <dimen name="thumb_size">72dp</dimen>
-    <dimen name="margins">4dp</dimen>
-    <dimen name="image_detail_pager_margin">80dp</dimen>
+	
+    <dimen name="thumb_size">90dp</dimen>
+    <dimen name="h_spacing">20dp</dimen>
+    <dimen name="v_spacing">20dp</dimen>
 
 </resources>

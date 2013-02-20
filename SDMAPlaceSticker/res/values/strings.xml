@@ -2,8 +2,7 @@
 <resources>
 
     <string name="app_name">SDMA Gallery</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="title_activity_metadata">MetadataActivity</string>
+    <string name="title_activity_metadata">Metadata</string>    
+    <string name="approach">Approach the artwork in the gallery</string>
 
 </resources>

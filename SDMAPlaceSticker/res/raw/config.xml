@@ -1,7 +1,6 @@
 ﻿<config>
-	<placesticker id="table" name="050PlaceSticker" x="80" y ="20" floor="1F" />
 	<placesticker id="1" name="033PlaceSticker" x="180" y ="20" floor="1F" />
-	<placesticker id="2" name="037PlaceSticker" x="180" y ="120" floor="1F" />
+	<placesticker id="2" name="050PlaceSticker" x="180" y ="120" floor="1F" />
 	<placesticker id="3" name="038PlaceSticker" x="80" y ="120" floor="1F" />
 	<placesticker id="4" name="134PlaceSticker" x="180" y ="20" floor="1F" />
 	<placesticker id="5" name="099PlaceSticker" x="180" y ="120" floor="1F" />
@@ -10,19 +9,4 @@
 	<placesticker id="8" name="099PlaceSticker" x="180" y ="120" floor="1F" />
 	<placesticker id="9" name="073PlaceSticker" x="80" y ="120" floor="1F" />
 	<placesticker id="10" name="061PlaceSticker" x="180" y ="20" floor="1F" />
-	<placesticker id="11" name="099PlaceSticker" x="180" y ="120" floor="1F" />
-	<placesticker id="12" name="073PlaceSticker" x="80" y ="120" floor="1F" />
-	<placesticker id="13" name="061PlaceSticker" x="180" y ="20" floor="1F" />
-	<placesticker id="14" name="099PlaceSticker" x="180" y ="120" floor="1F" />
-	<placesticker id="15" name="073PlaceSticker" x="80" y ="120" floor="1F" />
-	<placesticker id="16" name="061PlaceSticker" x="180" y ="20" floor="1F" />
-	<placesticker id="17" name="099PlaceSticker" x="180" y ="120" floor="1F" />
-	<placesticker id="18" name="073PlaceSticker" x="80" y ="120" floor="1F" />
-	<placesticker id="19" name="061PlaceSticker" x="180" y ="20" floor="1F" />
-	<placesticker id="20" name="099PlaceSticker" x="180" y ="120" floor="1F" />
-	<placesticker id="21" name="073PlaceSticker" x="80" y ="120" floor="1F" />
-	<placesticker id="22" name="061PlaceSticker" x="180" y ="20" floor="1F" />
-	<placesticker id="23" name="099PlaceSticker" x="180" y ="120" floor="1F" />
-	<placesticker id="24" name="073PlaceSticker" x="80" y ="120" floor="1F" />
-	<placesticker id="25" name="073PlaceSticker" x="80" y ="120" floor="1F" />
 </config>

@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -31,9 +32,12 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.BaseAdapter;
 import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -57,6 +61,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	private float MARGINSLR;
 	private float MARGINSTB;
 	private Resources res;
+	private GridView gridview;
 	private GridLayout gridlayout;
 	private LinearLayout linearlayout;
 	private ScrollView scrollview;
@@ -103,12 +108,9 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
         	wifiManager.setWifiEnabled(true);
         }
         
-	    gridlayout = (GridLayout) findViewById(R.id.gridlayout);
-	    linearlayout = (LinearLayout) findViewById(R.id.linearlayout);
-	    linearlayout.setBackgroundColor(Color.DKGRAY);
-	    scrollview= (ScrollView) findViewById(R.id.scrollview);
-	    //gridlayout.setBackgroundColor(Color.BLACK);
-	    gridlayout.bringToFront();
+        gridview = (GridView) findViewById(R.id.gridview);
+	    gridview.setBackgroundColor(Color.DKGRAY);
+        gridview.setAdapter(new ImageAdapter(this));
 	    
 	    scale = getResources().getDisplayMetrics().density;
 	    res = getResources();
@@ -119,74 +121,6 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	    receiver.setPlaceStcikerListener(this);
 	    
 	    THUMB_SIZE = res.getDimension(R.dimen.thumb_size);
-	    MARGINSLR = res.getDimension(R.dimen.marginslr);
-	    MARGINSTB = res.getDimension(R.dimen.marginstb);
-	    
-	    //Handle an orientation change
-	    final ArrayList<Integer> data = (ArrayList<Integer>) getLastNonConfigurationInstance();
-	    
-	    if(data != null) {	  //If images already added from previous orientation  	
-	    	addedIDs = new ArrayList<Integer>();
-	    	if(data.get(data.size() - 1) == 1) { //syncing
-	    		syncTable = true;
-	    		linearlayout.setBackgroundColor(Color.LTGRAY);
-	    	}
-	    	
-	    	for(int i = 0; i < data.size() - 1; i++) {
-	    		imgNum = data.get(i);
-	    		addedIDs.add(imgNum);
-	    		
-				GridLayout.LayoutParams layoutparams = new GridLayout.LayoutParams();
-		        layoutparams.setMargins((int)MARGINSLR, (int)MARGINSTB, (int)MARGINSLR, (int)MARGINSTB);
-		        System.out.println("FLAG1");
-		        ImageView imageView = new ImageView(this);
-		        imageView.setId(imgNum);
-		        imageView.setAdjustViewBounds(true);
-		        System.out.println("FLAG2");
-		        imageView.setMaxWidth((int)THUMB_SIZE);
-		        imageView.setMaxHeight((int)THUMB_SIZE);
-		        imageView.setLayoutParams(layoutparams);
-		        System.out.println("FLAG3");
-		        imageView.setImageResource(thumbIDs.get(imgNum - 1));
-		        imageView.setOnClickListener(new View.OnClickListener() {
-		            public void onClick(View v) {
-		            	gridlayout.removeView(v);
-		            	addedIDs.remove(addedIDs.indexOf(v.getId()));
-		            	addedThumbs.remove(v);
-		            }
-		        });
-		        System.out.println("FLAG4");
-		        
-		        gridlayout.addView(imageView, gridlayout.getChildCount());
-		        addedThumbs.add(imageView); //add thumbnail to arraylist
-	    	}
-	    	
-	    } else { //Else images haven't been added
-	    	addedIDs = new ArrayList<Integer>();
-	    }
-	    
-	    /*try {
-        	Log.i("Pre-socket", "Attemping socket");
-        	socket = new SocketIO();
-        	Log.i("Pre-connect", "Attemping connect");
-        	socket.connect("http://sdma.bpoc.org:3001", this);
-        } catch (MalformedURLException e) {
-        	Log.e("MalformedURL", "Malformed URL exception");
-        	e.printStackTrace();
-        }*/
-	    
-	    //Test notifcation
-	    /*NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-	    
-	    Intent intent = new Intent(this, MetadataActivity.class);
-	    intent.putExtra(IMG_INDEX, approached_index);
-	    PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
-
-	    // Build notification
-	    Notification notification = new Notification.Builder(this);
-	    
-
-	    notificationManager.notify(0, notification);*/
 	}
 
 	@Override
@@ -194,18 +128,6 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		// Inflate the menu; this adds items to the action bar if it is present.
 		//getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
-	}
-	
-	@Override
-	public Object onRetainNonConfigurationInstance() {
-		ArrayList<Integer> data = addedIDs;
-		if(syncTable) 
-			data.add(1);
-		else
-			data.add(0);
-		
-		return data;
-		
 	}
 	
 	@Override
@@ -271,13 +193,15 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	}
 	
 	private void approachedWork(int index) {
+		
 		approached_index = index;
-		ImageView approached_img = addedThumbs.get(addedIDs.indexOf(index));
+		//ImageView approached_img = addedThumbs.get(addedIDs.indexOf(index)); //translation to which image
+		ImageView approached_img = addedThumbs.get(index);
 		Animation thumbGrow = AnimationUtils.loadAnimation(this, R.anim.thumb_grow);
 		approached_img.bringToFront();
 		approached_img.startAnimation(thumbGrow);
 		vibrator.vibrate(200);
-		thumbGrow.setAnimationListener(anim_listener);		
+		thumbGrow.setAnimationListener(anim_listener);
 	}
 	
 	Animation.AnimationListener anim_listener = new Animation.AnimationListener() {
@@ -350,24 +274,69 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 			String psID = position.getNearestPlaceSticker().getId();
 			int psDistance = position.getNearestPlaceSticker().getDistance();
 			
-			if(psID.compareTo("table") == 0 && syncTable == false && psDistance <= 25) { //By the table
-				Toast.makeText(MainActivity.this, "Synced with touchtable", Toast.LENGTH_SHORT).show();
-				linearlayout.setBackgroundColor(Color.LTGRAY);
-				syncTable = true;
-			} else if(psID.compareTo("table") != 0) { //By an artwork
-				if(addedIDs.contains(Integer.parseInt(psID))) {
-					approachedWork(Integer.parseInt(psID));
-				}
-				//Toast.makeText(MainActivity.this, "Approached image " + psID, Toast.LENGTH_SHORT).show();
-				linearlayout.setBackgroundColor(Color.DKGRAY);
-				syncTable = false;
-			}
+			//Toast.makeText(MainActivity.this, "Approached image " + psID, Toast.LENGTH_SHORT).show();
 			
-		}else{ //Not by a table
-			//sampleView.setText("Not in Range");
-			syncTable = false;
-			linearlayout.setBackgroundColor(Color.DKGRAY);
+			approachedWork(Integer.parseInt(psID));
+			
 		}
 	}
+	
+	
+	//Internal ImageAdapter class
+	public class ImageAdapter extends BaseAdapter {
+	    private Context mContext;
+	    
+	    // references to our images
+	    private ArrayList<Integer> mThumbIds;
+	    
+	    public ImageAdapter(Context c) {
+	        mContext = c;
+	        mThumbIds = new ArrayList<Integer>();
+	        
+	        mThumbIds.add(R.drawable.img_1);
+	        mThumbIds.add(R.drawable.img_2);
+	        mThumbIds.add(R.drawable.img_3);
+	        mThumbIds.add(R.drawable.img_4);
+	        mThumbIds.add(R.drawable.img_5);
+	        mThumbIds.add(R.drawable.img_6);
+	        mThumbIds.add(R.drawable.img_7);
+	        mThumbIds.add(R.drawable.img_8);
+	        mThumbIds.add(R.drawable.img_9);
+	        mThumbIds.add(R.drawable.img_10);
+	    }
 
+	    public int getCount() {
+	        return mThumbIds.size();
+	    }
+
+	    public Object getItem(int position) {
+	        return null;
+	    }
+
+	    public long getItemId(int position) {
+	        return 0;
+	    }
+
+	    // create a new ImageView for each item referenced by the Adapter
+	    public View getView(int position, View convertView, ViewGroup parent) {
+	        ImageView imageView;
+	        if (convertView == null) {  // if it's not recycled, initialize some attributes
+	            imageView = new ImageView(mContext);
+	            System.out.println(dpToPx(res.getDimension(R.dimen.thumb_size)));
+	            imageView.setLayoutParams(new GridView.LayoutParams(dpToPx(THUMB_SIZE), dpToPx(THUMB_SIZE)));
+	            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+	        } else {
+	            imageView = (ImageView) convertView;
+	        }
+
+	        imageView.setImageResource(mThumbIds.get(position));
+	        addedThumbs.add(imageView);
+	        return imageView;
+	    }
+	    
+	    public void remove(int position) {
+	    	mThumbIds.remove(position);
+	    }
+	}
+	
 }

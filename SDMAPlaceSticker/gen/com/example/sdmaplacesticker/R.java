@@ -17,15 +17,13 @@ public final class R {
     public static final class attr {
     }
     public static final class dimen {
-        public static final int image_detail_pager_margin=0x7f060002;
-        public static final int image_thumbnail_size=0x7f060003;
-        public static final int image_thumbnail_spacing=0x7f060004;
-        public static final int leftPad=0x7f060007;
-        public static final int margins=0x7f060001;
-        public static final int marginslr=0x7f060005;
-        public static final int marginstb=0x7f060006;
+        public static final int h_spacing=0x7f060001;
+        public static final int image_detail_pager_margin=0x7f060004;
+        public static final int image_thumbnail_size=0x7f060005;
+        public static final int image_thumbnail_spacing=0x7f060006;
+        public static final int margins=0x7f060003;
         public static final int thumb_size=0x7f060000;
-        public static final int topPad=0x7f060008;
+        public static final int v_spacing=0x7f060002;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
@@ -57,23 +55,22 @@ public final class R {
         public static final int test=0x7f02001a;
     }
     public static final class id {
-        public static final int artist=0x7f0b0007;
-        public static final int date=0x7f0b0009;
-        public static final int description=0x7f0b000f;
-        public static final int dimensions=0x7f0b000d;
-        public static final int gridlayout=0x7f0b0002;
-        public static final int image=0x7f0b0003;
-        public static final int lb_artist=0x7f0b0006;
-        public static final int lb_date=0x7f0b0008;
-        public static final int lb_description=0x7f0b000e;
-        public static final int lb_dimensions=0x7f0b000c;
-        public static final int lb_place=0x7f0b000a;
-        public static final int lb_title=0x7f0b0004;
-        public static final int linearlayout=0x7f0b0000;
-        public static final int menu_settings=0x7f0b0010;
-        public static final int place=0x7f0b000b;
+        public static final int artist=0x7f0b0006;
+        public static final int date=0x7f0b0008;
+        public static final int description=0x7f0b000e;
+        public static final int dimensions=0x7f0b000c;
+        public static final int gridview=0x7f0b0000;
+        public static final int image=0x7f0b0002;
+        public static final int lb_artist=0x7f0b0005;
+        public static final int lb_date=0x7f0b0007;
+        public static final int lb_description=0x7f0b000d;
+        public static final int lb_dimensions=0x7f0b000b;
+        public static final int lb_place=0x7f0b0009;
+        public static final int lb_title=0x7f0b0003;
+        public static final int menu_settings=0x7f0b000f;
+        public static final int place=0x7f0b000a;
         public static final int scrollview=0x7f0b0001;
-        public static final int title=0x7f0b0005;
+        public static final int title=0x7f0b0004;
     }
     public static final class integer {
         public static final int num_columns=0x7f070000;
@@ -91,9 +88,10 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f080000;
-        public static final int hello_world=0x7f080001;
-        public static final int menu_settings=0x7f080002;
-        public static final int title_activity_metadata=0x7f080003;
+        public static final int approach=0x7f080002;
+        public static final int hello_world=0x7f080003;
+        public static final int menu_settings=0x7f080004;
+        public static final int title_activity_metadata=0x7f080001;
     }
     public static final class style {
         /** 

@@ -2,6 +2,6 @@
 
 <resources>
 
-    <integer name="num_columns">2</integer>
+    <integer name="num_columns">3</integer>
 
 </resources>
