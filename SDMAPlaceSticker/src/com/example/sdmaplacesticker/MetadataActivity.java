@@ -89,7 +89,7 @@ public class MetadataActivity extends Activity implements PlaceStickerListener {
 		description.setAlpha(0);*/
 	}
 	
-	@Override
+	/*@Override
 	public void onBackPressed()  
 	{  
 	    //do whatever you want the 'Back' button to do  
@@ -99,7 +99,7 @@ public class MetadataActivity extends Activity implements PlaceStickerListener {
 	    this.startActivity(intent);  
 
 	    return;  
-	}
+	}*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
