@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -109,7 +110,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
         }
         
         gridview = (GridView) findViewById(R.id.gridview);
-	    gridview.setBackgroundColor(Color.DKGRAY);
+	    gridview.setBackgroundColor(Color.BLACK);
         gridview.setAdapter(new ImageAdapter(this));
 	    
 	    scale = getResources().getDisplayMetrics().density;
@@ -281,7 +282,6 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		}
 	}
 	
-	
 	//Internal ImageAdapter class
 	public class ImageAdapter extends BaseAdapter {
 	    private Context mContext;
@@ -322,7 +322,6 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	        ImageView imageView;
 	        if (convertView == null) {  // if it's not recycled, initialize some attributes
 	            imageView = new ImageView(mContext);
-	            System.out.println(dpToPx(res.getDimension(R.dimen.thumb_size)));
 	            imageView.setLayoutParams(new GridView.LayoutParams(dpToPx(THUMB_SIZE), dpToPx(THUMB_SIZE)));
 	            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 	        } else {

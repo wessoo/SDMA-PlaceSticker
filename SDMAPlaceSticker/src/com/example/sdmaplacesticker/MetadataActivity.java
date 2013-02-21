@@ -88,6 +88,18 @@ public class MetadataActivity extends Activity implements PlaceStickerListener {
 		TextView description = (TextView) findViewById(R.id.description);
 		description.setAlpha(0);*/
 	}
+	
+	@Override
+	public void onBackPressed()  
+	{  
+	    //do whatever you want the 'Back' button to do  
+	    //as an example the 'Back' button is set to start a new Activity named 'NewActivity'  
+	    Intent intent = new Intent(MetadataActivity.this, MainActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    this.startActivity(intent);  
+
+	    return;  
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

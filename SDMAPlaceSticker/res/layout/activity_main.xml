@@ -1,33 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearlayout"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:paddingTop="5dp" >
-    
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/scrollview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-    
-		<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			android:id="@+id/gridlayout"
-			android:layout_width="fill_parent"
-			android:layout_height="0dp"
-			android:layout_weight="1"
-			android:paddingLeft="0dp"
-			android:columnWidth="65dp"
-			android:numColumns="auto_fit"
-			android:columnCount="4"
-			android:stretchMode="columnWidth"
-			android:animateLayoutChanges="true" >		    
-		</GridLayout>
-		
-	</ScrollView>
-	
-</LinearLayout> -->
+<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:text="In the gallery, find these artworks" /> -->
 
 <GridView xmlns:android="http://schemas.android.com/apk/res/android" 
     android:id="@+id/gridview"
@@ -40,3 +20,5 @@
     android:numColumns="@integer/num_columns"
     android:columnWidth="60dp"
     android:gravity="center" />
+
+<!-- </LinearLayout> -->

@@ -2,8 +2,9 @@
 
 <resources>
 	
-    <dimen name="thumb_size">280dp</dimen>
-    <dimen name="h_spacing">28dp</dimen>
+    <dimen name="thumb_size">210dp</dimen>
+    <dimen name="h_spacing">20dp</dimen>
     <dimen name="v_spacing">30dp</dimen>
+    <dimen name="padding_top">150dp</dimen>
 
 </resources>
