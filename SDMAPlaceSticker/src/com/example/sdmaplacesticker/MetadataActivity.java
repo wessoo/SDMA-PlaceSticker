@@ -75,36 +75,11 @@ public class MetadataActivity extends Activity implements PlaceStickerListener {
 		//Set alpha
 		ImageView image = (ImageView) findViewById(R.id.image);
 		image.setAlpha(0f);
-		/*TextView title = (TextView) findViewById(R.id.title);
-		title.setAlpha(0);
-		TextView artist = (TextView) findViewById(R.id.artist);
-		artist.setAlpha(0);
-		TextView date = (TextView) findViewById(R.id.date);
-		date.setAlpha(0);
-		TextView place = (TextView) findViewById(R.id.place);
-		place.setAlpha(0);
-		TextView dimensions = (TextView) findViewById(R.id.dimensions);
-		dimensions.setAlpha(0);
-		TextView description = (TextView) findViewById(R.id.description);
-		description.setAlpha(0);*/
 	}
-	
-	/*@Override
-	public void onBackPressed()  
-	{  
-	    //do whatever you want the 'Back' button to do  
-	    //as an example the 'Back' button is set to start a new Activity named 'NewActivity'  
-	    Intent intent = new Intent(MetadataActivity.this, MainActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-	    this.startActivity(intent);  
-
-	    return;  
-	}*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_metadata, menu);
+		
 		return true;
 	}
 

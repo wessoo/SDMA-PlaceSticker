@@ -1,30 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android" 
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    android:orientation="vertical" >
-	
-    <TextView
-	        android:gravity="center_horizontal"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:textSize="15sp"
-	        android:layout_marginTop="5dp"
-	        android:layout_marginBottom="2dp"
-	        android:text="@string/approach" />
-    
-	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
-	    android:layout_height="fill_parent"
-	    android:layout_width="fill_parent" >
+    android:background="#000000" >
 	    
-	    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content" >
-	        
-	        <TableRow  
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+        
+        <TableRow  
 	        android:id="@+id/row1"  
 	        android:layout_height="wrap_content"  
 	        android:layout_width="match_parent"  
@@ -32,19 +19,19 @@
 	        	<ImageView
 	        	    android:src="@drawable/img_1"
 	        	    android:id="@+id/img_1"
-	        	    android:layout_marginTop="10dp"
-	        	    android:layout_marginRight="5dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="10dp"
+	        	    android:layout_marginTop="20dp"
+	        	    android:layout_marginRight="10dp"
+	        	    android:layout_marginBottom="20dp"
+	        	    android:layout_marginLeft="20dp"
 	        	    android:layout_width="@dimen/thumb_size"
-	        	    android:layout_height="@dimen/thumb_size" />"
+	        	    android:layout_height="@dimen/thumb_size" />
 	        	<ImageView 
 	        	    android:src="@drawable/img_2"
 	        	    android:id="@+id/img_2"
-	        	    android:layout_marginTop="10dp"
-	        	    android:layout_marginRight="10dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="5dp"
+	        	    android:layout_marginTop="20dp"
+	        	    android:layout_marginRight="20dp"
+	        	    android:layout_marginBottom="20dp"
+	        	    android:layout_marginLeft="10dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
 	        </TableRow>
@@ -57,17 +44,17 @@
 	        	<ImageView
 	        	    android:src="@drawable/img_3"
 	        	    android:id="@+id/img_3"
-	        	    android:layout_marginRight="5dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="10dp"
+	        	    android:layout_marginRight="10dp"
+	        	    android:layout_marginBottom="20dp"
+	        	    android:layout_marginLeft="20dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
 	        	<ImageView 
 	        	    android:src="@drawable/img_4"
 	        	    android:id="@+id/img_4"
-	        	    android:layout_marginRight="10dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="5dp"
+	        	    android:layout_marginRight="20dp"
+	        	    android:layout_marginBottom="20dp"
+	        	    android:layout_marginLeft="10dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
 	        </TableRow>
@@ -80,17 +67,17 @@
 	        	<ImageView
 	        	    android:id="@+id/img_5"
 	        	    android:src="@drawable/img_5"
-	        	    android:layout_marginRight="5dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="10dp"
+	        	    android:layout_marginRight="10dp"
+	        	    android:layout_marginBottom="20dp"
+	        	    android:layout_marginLeft="20dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
 	        	<ImageView 
 	        	    android:src="@drawable/img_6"
 	        	    android:id="@+id/img_6"
-	        	    android:layout_marginRight="10dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="5dp"
+	        	    android:layout_marginRight="20dp"
+	        	    android:layout_marginBottom="20dp"
+	        	    android:layout_marginLeft="10dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
 	        </TableRow>
@@ -103,17 +90,17 @@
 	        	<ImageView
 	        	    android:src="@drawable/img_7"
 	        	    android:id="@+id/img_7"
-	        	    android:layout_marginRight="5dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="10dp"
+	        	    android:layout_marginRight="10dp"
+	        	    android:layout_marginBottom="20dp"
+	        	    android:layout_marginLeft="20dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
 	        	<ImageView 
 	        	    android:src="@drawable/img_8"
 	        	    android:id="@+id/img_8"
-	        	    android:layout_marginRight="10dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="5dp"
+	        	    android:layout_marginRight="20dp"
+	        	    android:layout_marginBottom="20dp"
+	        	    android:layout_marginLeft="10dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
 	        </TableRow>
@@ -126,23 +113,21 @@
 	        	<ImageView
 	        	    android:src="@drawable/img_9"
 	        	    android:id="@+id/img_9"
-	        	    android:layout_marginRight="5dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="10dp"
+	        	    android:layout_marginRight="10dp"
+	        	    android:layout_marginBottom="20dp"
+	        	    android:layout_marginLeft="20dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
 	        	<ImageView 
 	        	    android:src="@drawable/img_10"
 	        	    android:id="@+id/img_10"
-	        	    android:layout_marginRight="10dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="5dp"
+	        	    android:layout_marginRight="20dp"
+	        	    android:layout_marginBottom="20dp"
+	        	    android:layout_marginLeft="10dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
-	        </TableRow>"
-	        
-	    </TableLayout>
-	    
-	</ScrollView>
+	        </TableRow>
+        
+    </TableLayout>
 
-</LinearLayout>
+</RelativeLayout>

@@ -2,7 +2,7 @@
 
 <resources>
 	
-    <dimen name="thumb_size">90dp</dimen>
+    <dimen name="thumb_size">145dp</dimen>
     <dimen name="h_spacing">20dp</dimen>
     <dimen name="v_spacing">20dp</dimen>
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#000000"
     android:orientation="vertical" >
-	
+    
     <TextView
 	        android:gravity="center_horizontal"
 	        android:layout_width="fill_parent"
@@ -15,7 +15,7 @@
 	        android:layout_marginTop="5dp"
 	        android:layout_marginBottom="2dp"
 	        android:text="@string/approach" />
-    
+
 	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
 	    android:layout_height="fill_parent"
 	    android:layout_width="fill_parent" >
@@ -37,10 +37,19 @@
 	        	    android:layout_marginBottom="10dp"
 	        	    android:layout_marginLeft="10dp"
 	        	    android:layout_width="@dimen/thumb_size"
-	        	    android:layout_height="@dimen/thumb_size" />"
+	        	    android:layout_height="@dimen/thumb_size" />
 	        	<ImageView 
 	        	    android:src="@drawable/img_2"
 	        	    android:id="@+id/img_2"
+	        	    android:layout_marginTop="10dp"
+	        	    android:layout_marginRight="5dp"
+	        	    android:layout_marginBottom="10dp"
+	        	    android:layout_marginLeft="5dp"
+	        	    android:layout_width="@dimen/thumb_size"
+	        	    android:layout_height="@dimen/thumb_size" />
+	        	<ImageView 
+	        	    android:src="@drawable/img_3"
+	        	    android:id="@+id/img_3"
 	        	    android:layout_marginTop="10dp"
 	        	    android:layout_marginRight="10dp"
 	        	    android:layout_marginBottom="10dp"
@@ -55,34 +64,19 @@
 	        android:layout_width="match_parent"  
 	        android:gravity="center_horizontal">
 	        	<ImageView
-	        	    android:src="@drawable/img_3"
-	        	    android:id="@+id/img_3"
+	        	    android:src="@drawable/img_4"
+	        	    android:id="@+id/img_4"
 	        	    android:layout_marginRight="5dp"
 	        	    android:layout_marginBottom="10dp"
 	        	    android:layout_marginLeft="10dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
 	        	<ImageView 
-	        	    android:src="@drawable/img_4"
-	        	    android:id="@+id/img_4"
-	        	    android:layout_marginRight="10dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="5dp"
-	        	    android:layout_width="@dimen/thumb_size"
-	        	    android:layout_height="@dimen/thumb_size" />
-	        </TableRow>
-	        
-	        <TableRow  
-	        android:id="@+id/row3"  
-	        android:layout_height="wrap_content"  
-	        android:layout_width="match_parent"  
-	        android:gravity="center_horizontal">
-	        	<ImageView
-	        	    android:id="@+id/img_5"
 	        	    android:src="@drawable/img_5"
+	        	    android:id="@+id/img_5"
 	        	    android:layout_marginRight="5dp"
 	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="10dp"
+	        	    android:layout_marginLeft="5dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
 	        	<ImageView 
@@ -96,7 +90,7 @@
 	        </TableRow>
 	        
 	        <TableRow  
-	        android:id="@+id/row4"  
+	        android:id="@+id/row1"  
 	        android:layout_height="wrap_content"  
 	        android:layout_width="match_parent"  
 	        android:gravity="center_horizontal">
@@ -111,6 +105,14 @@
 	        	<ImageView 
 	        	    android:src="@drawable/img_8"
 	        	    android:id="@+id/img_8"
+	        	    android:layout_marginRight="5dp"
+	        	    android:layout_marginBottom="10dp"
+	        	    android:layout_marginLeft="5dp"
+	        	    android:layout_width="@dimen/thumb_size"
+	        	    android:layout_height="@dimen/thumb_size" />
+	        	<ImageView 
+	        	    android:src="@drawable/img_9"
+	        	    android:id="@+id/img_9"
 	        	    android:layout_marginRight="10dp"
 	        	    android:layout_marginBottom="10dp"
 	        	    android:layout_marginLeft="5dp"
@@ -119,30 +121,46 @@
 	        </TableRow>
 	        
 	        <TableRow  
-	        android:id="@+id/row5"  
+	        android:id="@+id/row1"  
 	        android:layout_height="wrap_content"  
 	        android:layout_width="match_parent"  
 	        android:gravity="center_horizontal">
 	        	<ImageView
-	        	    android:src="@drawable/img_9"
-	        	    android:id="@+id/img_9"
-	        	    android:layout_marginRight="5dp"
-	        	    android:layout_marginBottom="10dp"
-	        	    android:layout_marginLeft="10dp"
-	        	    android:layout_width="@dimen/thumb_size"
-	        	    android:layout_height="@dimen/thumb_size" />
-	        	<ImageView 
 	        	    android:src="@drawable/img_10"
 	        	    android:id="@+id/img_10"
-	        	    android:layout_marginRight="10dp"
+	        	    android:layout_marginRight="5dp"
 	        	    android:layout_marginBottom="10dp"
 	        	    android:layout_marginLeft="5dp"
 	        	    android:layout_width="@dimen/thumb_size"
 	        	    android:layout_height="@dimen/thumb_size" />
-	        </TableRow>"
+	        </TableRow>
+	        
 	        
 	    </TableLayout>
 	    
 	</ScrollView>
 
 </LinearLayout>
+
+<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:text="In the gallery, find these artworks" /> -->
+
+<!-- <GridView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:id="@+id/gridview"
+	android:layout_width="match_parent" 
+	android:layout_height="match_parent"
+    android:verticalSpacing="@dimen/v_spacing"
+    android:horizontalSpacing="@dimen/h_spacing"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:numColumns="@integer/num_columns"
+    android:columnWidth="60dp"
+    android:gravity="center" /> -->
+
+<!-- </LinearLayout> -->

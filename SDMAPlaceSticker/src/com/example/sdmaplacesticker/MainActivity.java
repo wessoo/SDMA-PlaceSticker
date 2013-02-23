@@ -42,6 +42,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TableRow;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements IOCallback, PlaceStickerListener {
@@ -54,6 +55,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	private ArrayList<Integer> thumbIDs;
 	private ArrayList<Integer> addedIDs;
 	private ArrayList<ImageView> addedThumbs;
+	private ArrayList<ImageView> thumbs;
 	private int imgNum = 0;
 	private int approached_index = 0;
 	private boolean syncTable = false;
@@ -76,7 +78,20 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	    setContentView(R.layout.activity_main);
 	    
 	    addedThumbs = new ArrayList<ImageView>();
-	    thumbIDs = new ArrayList<Integer>();
+	    
+	    thumbs = new ArrayList<ImageView>();
+	    thumbs.add((ImageView) findViewById(R.id.img_1));
+        thumbs.add((ImageView) findViewById(R.id.img_2));
+        thumbs.add((ImageView) findViewById(R.id.img_3));
+        thumbs.add((ImageView) findViewById(R.id.img_4));
+        thumbs.add((ImageView) findViewById(R.id.img_5));
+        thumbs.add((ImageView) findViewById(R.id.img_6));
+        thumbs.add((ImageView) findViewById(R.id.img_7));
+        thumbs.add((ImageView) findViewById(R.id.img_8));
+        thumbs.add((ImageView) findViewById(R.id.img_9));
+        thumbs.add((ImageView) findViewById(R.id.img_10));
+	    
+        thumbIDs = new ArrayList<Integer>();
         thumbIDs.add(R.drawable.img_1);
         thumbIDs.add(R.drawable.img_2);
         thumbIDs.add(R.drawable.img_3);
@@ -87,21 +102,6 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
         thumbIDs.add(R.drawable.img_8);
         thumbIDs.add(R.drawable.img_9);
         thumbIDs.add(R.drawable.img_10);
-        thumbIDs.add(R.drawable.img_11);
-        thumbIDs.add(R.drawable.img_12);
-        thumbIDs.add(R.drawable.img_13);
-        thumbIDs.add(R.drawable.img_14);
-        thumbIDs.add(R.drawable.img_15);
-        thumbIDs.add(R.drawable.img_16);
-        thumbIDs.add(R.drawable.img_17);
-        thumbIDs.add(R.drawable.img_18);
-        thumbIDs.add(R.drawable.img_19);
-        thumbIDs.add(R.drawable.img_20);
-        thumbIDs.add(R.drawable.img_21);
-        thumbIDs.add(R.drawable.img_22);
-        thumbIDs.add(R.drawable.img_23);
-        thumbIDs.add(R.drawable.img_24);
-        thumbIDs.add(R.drawable.img_25);
 	    
         //turn on WiFi
         wifiManager = (WifiManager) this.getSystemService(this.WIFI_SERVICE);
@@ -109,9 +109,9 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
         	wifiManager.setWifiEnabled(true);
         }
         
-        gridview = (GridView) findViewById(R.id.gridview);
-	    gridview.setBackgroundColor(Color.BLACK);
-        gridview.setAdapter(new ImageAdapter(this));
+        scrollview = (ScrollView) findViewById(R.id.scrollview);
+	    //scrollview.setBackgroundColor(Color.BLACK);
+        //scrollview.setAdapter(new ImageAdapter(this));
 	    
 	    scale = getResources().getDisplayMetrics().density;
 	    res = getResources();
@@ -132,6 +132,12 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	}
 	
 	@Override
+	protected void onPause() {
+		super.onPause();		
+		receiver.scanStop();
+	}
+	
+	@Override
 	protected void onResume() {
 		super.onResume();
 		
@@ -145,13 +151,28 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		} catch (PlaceStickerException e) {
 			e.printStackTrace();
 		}
+
+	}
+	
+	/*@Override
+	protected void onStop() {
+		super.onStop();		
+		receiver.scanStop();
 	}
 	
 	@Override
-	protected void onPause() {
-		super.onPause();		
-		receiver.scanStop();
-	}
+	protected void onRestart() {
+		super.onRestart();
+		
+		Toast.makeText(MainActivity.this, "onRestart() called" , Toast.LENGTH_SHORT).show();
+		
+		try {
+        	receiver.loadSettingFile(R.raw.config);
+			receiver.scanStart();
+		} catch (PlaceStickerException e) {
+			e.printStackTrace();
+		}
+	}*/
 	
 	public Runnable updateRunnable = new Runnable() {
     	public void run() {
@@ -197,9 +218,11 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		
 		approached_index = index;
 		//ImageView approached_img = addedThumbs.get(addedIDs.indexOf(index)); //translation to which image
-		ImageView approached_img = addedThumbs.get(index);
+		ImageView approached_img = thumbs.get(index - 1);
 		Animation thumbGrow = AnimationUtils.loadAnimation(this, R.anim.thumb_grow);
 		approached_img.bringToFront();
+		TableRow tl = (TableRow) approached_img.getParent();
+		tl.bringToFront();
 		approached_img.startAnimation(thumbGrow);
 		vibrator.vibrate(200);
 		thumbGrow.setAnimationListener(anim_listener);
@@ -280,62 +303,8 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 			approachedWork(Integer.parseInt(psID));
 			
 		}
-	}
-	
-	//Internal ImageAdapter class
-	public class ImageAdapter extends BaseAdapter {
-	    private Context mContext;
-	    
-	    // references to our images
-	    private ArrayList<Integer> mThumbIds;
-	    
-	    public ImageAdapter(Context c) {
-	        mContext = c;
-	        mThumbIds = new ArrayList<Integer>();
-	        
-	        mThumbIds.add(R.drawable.img_1);
-	        mThumbIds.add(R.drawable.img_2);
-	        mThumbIds.add(R.drawable.img_3);
-	        mThumbIds.add(R.drawable.img_4);
-	        mThumbIds.add(R.drawable.img_5);
-	        mThumbIds.add(R.drawable.img_6);
-	        mThumbIds.add(R.drawable.img_7);
-	        mThumbIds.add(R.drawable.img_8);
-	        mThumbIds.add(R.drawable.img_9);
-	        mThumbIds.add(R.drawable.img_10);
-	    }
-
-	    public int getCount() {
-	        return mThumbIds.size();
-	    }
-
-	    public Object getItem(int position) {
-	        return null;
-	    }
-
-	    public long getItemId(int position) {
-	        return 0;
-	    }
-
-	    // create a new ImageView for each item referenced by the Adapter
-	    public View getView(int position, View convertView, ViewGroup parent) {
-	        ImageView imageView;
-	        if (convertView == null) {  // if it's not recycled, initialize some attributes
-	            imageView = new ImageView(mContext);
-	            imageView.setLayoutParams(new GridView.LayoutParams(dpToPx(THUMB_SIZE), dpToPx(THUMB_SIZE)));
-	            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-	        } else {
-	            imageView = (ImageView) convertView;
-	        }
-
-	        imageView.setImageResource(mThumbIds.get(position));
-	        addedThumbs.add(imageView);
-	        return imageView;
-	    }
-	    
-	    public void remove(int position) {
-	    	mThumbIds.remove(position);
-	    }
+		
+		//Toast.makeText(MainActivity.this, "Polling" , Toast.LENGTH_SHORT).show();
 	}
 	
 }

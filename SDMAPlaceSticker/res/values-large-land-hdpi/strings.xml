@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string name="app_name">SDMA Gallery</string>
-    <string name="title_activity_metadata">Metadata</string>    
-    <string name="approach">Approach the artwork in the gallery</string>
-
-</resources>

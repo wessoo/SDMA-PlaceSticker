@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SDMA Gallery</string>
+    <string name="app_name">Timken</string>
+    <string name="menu_settings">Settings</string>
     <string name="title_activity_metadata">Metadata</string>    
-    <string name="approach">Approach the artwork in the gallery</string>
+    <string name="approach">Can you find these artwors in the galleries?\n When you do, open this app</string>
 
 </resources>
