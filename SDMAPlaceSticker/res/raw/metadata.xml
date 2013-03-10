@@ -1,26 +1,22 @@
 <metadata>
 	<work>
-		<title>Boo Foo</title>
-		<artist>John Doe</artist>
-		<date>1.2.3456</date>
-		<place>Central City</place>
-		<dimensions>12 x 34</dimensions>
-		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices consectetur sem eu commodo. Maecenas tempus facilisis augue, nec vulputate nunc luctus vitae. Vestibulum aliquam lectus lacinia sapien porttitor sed cursus arcu cursus. Maecenas euismod quam felis. Duis tincidunt aliquet neque vitae ullamcorper. Nulla rhoncus sem et justo sodales quis iaculis elit scelerisque. Mauris egestas fermentum turpis ac ultricies. Ut consequat sodales nunc. Praesent in vehicula nibh. In hac habitasse platea dictumst. Proin ligula orci, iaculis a faucibus ut, aliquet sit amet lacus.</description>
+		<title>The Piazzetta at Venice</title>
+		<artist>Luca Carlevarijs</artist>
+		<date>1663 - 1730</date>
+		<nationality>Italian</nationality>
+		<place>Italy</place>
+		<dimensions>38 x 76 7/8 in</dimensions>
+		<medium>Oil on canvas</medium>
+		<description>Carlevarijs was the first painter of Italian origin to specialize in views of Venice. The artist's many precise renditions of the city reveal his early training as a mathematician. His painting of the Piazzetta places the viewer in a boat on the Grand Canal, looking north toward the Piazza of St. Mark. The direction of the shadows from the southwest indicates that the time is afternoon. On the left are the library of Sansovino, the lower portion of its Campanile, and the column of St. Theodoric. To the right are the south side of St. Mark's, the Doge's Palace, and the column of St. Mark. The buildings, though not entirely accurate in certain architectural details, remain largely unchanged to this day.</description>
 	</work>
 	<work>
-		<title>Bla La</title>
-		<artist>Jane Doe</artist>
-		<date>1.1.2010</date>
-		<place>Chicago</place>
-		<dimensions>12 x 14</dimensions>
-		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices consectetur sem eu commodo. Maecenas tempus facilisis augue, nec vulputate nunc luctus vitae. Vestibulum aliquam lectus lacinia sapien porttitor sed cursus arcu cursus. Maecenas euismod quam felis. Duis tincidunt aliquet neque vitae ullamcorper. Nulla rhoncus sem et justo sodales quis iaculis elit scelerisque. Mauris egestas fermentum turpis ac ultricies. Ut consequat sodales nunc. Praesent in vehicula nibh. In hac habitasse platea dictumst. Proin ligula orci, iaculis a faucibus ut, aliquet sit amet lacus.</description>
-	</work>
-	<work>
-		<title>Oh yes</title>
-		<artist>Lisa Morgan</artist>
-		<date>11.12.2013</date>
-		<place>Atlantis City</place>
-		<dimensions>90 x 90</dimensions>
-		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices consectetur sem eu commodo. Maecenas tempus facilisis augue, nec vulputate nunc luctus vitae. Vestibulum aliquam lectus lacinia sapien porttitor sed cursus arcu cursus. Maecenas euismod quam felis. Duis tincidunt aliquet neque vitae ullamcorper. Nulla rhoncus sem et justo sodales quis iaculis elit scelerisque. Mauris egestas fermentum turpis ac ultricies. Ut consequat sodales nunc. Praesent in vehicula nibh. In hac habitasse platea dictumst. Proin ligula orci, iaculis a faucibus ut, aliquet sit amet lacus.</description>
+		<title>Saint Bartholomew</title>
+		<artist>Rembrandt van Rijn</artist>
+		<date>ca. 1657</date>
+		<nationality>Dutch</nationality>
+		<place>Netherlands</place>
+		<dimensions>48 3/8 x 39 1/4 in</dimensions>
+		<medium>Oil on canvas</medium>
+		<description>Known primarily for his portraits and landscapes, Rembrandt remained interested throughout his life in history and biblical painting. The subject of this large, dramatic painting from the artist's mature period is St. Bartholomew, one of the twelve apostles. The apostle, flayed alive for his beliefs, holds in his right hand a butcher's knife, a symbol of his martyrdom. The saint's slightly unsettled pose and animated expression suggest that he is contemplating an ethical problem.\n\n Rembrandt conveys a mood of introspection in his late works--in contrast to his earlier, more theatrical pictures--and renders light, textures, and the sense of form in space with complex schemes of loose brushwork and glazes.\n\nVisit the Rembrandt in Southern California information site prepared by The Getty Museum.</description>
 	</work>
 </metadata>

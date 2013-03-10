@@ -9,10 +9,11 @@ package com.example.sdmaplacesticker;
 
 public final class R {
     public static final class anim {
-        public static final int thumb_grow=0x7f040000;
-        public static final int thumbgrow=0x7f040001;
-        public static final int zoom_enter=0x7f040002;
-        public static final int zoom_exit=0x7f040003;
+        public static final int fade_img=0x7f040000;
+        public static final int thumb_grow=0x7f040001;
+        public static final int thumbgrow=0x7f040002;
+        public static final int zoom_enter=0x7f040003;
+        public static final int zoom_exit=0x7f040004;
     }
     public static final class attr {
     }
@@ -27,76 +28,52 @@ public final class R {
         public static final int v_spacing=0x7f060002;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int img_1=0x7f020001;
-        public static final int img_10=0x7f020002;
-        public static final int img_11=0x7f020003;
-        public static final int img_12=0x7f020004;
-        public static final int img_13=0x7f020005;
-        public static final int img_14=0x7f020006;
-        public static final int img_15=0x7f020007;
-        public static final int img_16=0x7f020008;
-        public static final int img_17=0x7f020009;
-        public static final int img_18=0x7f02000a;
-        public static final int img_19=0x7f02000b;
-        public static final int img_2=0x7f02000c;
-        public static final int img_20=0x7f02000d;
-        public static final int img_21=0x7f02000e;
-        public static final int img_22=0x7f02000f;
-        public static final int img_23=0x7f020010;
-        public static final int img_24=0x7f020011;
-        public static final int img_25=0x7f020012;
-        public static final int img_3=0x7f020013;
-        public static final int img_4=0x7f020014;
-        public static final int img_5=0x7f020015;
-        public static final int img_6=0x7f020016;
-        public static final int img_7=0x7f020017;
-        public static final int img_8=0x7f020018;
-        public static final int img_9=0x7f020019;
-        public static final int test=0x7f02001a;
+        public static final int carlevarijs=0x7f020000;
+        public static final int carlevarijs_thumb=0x7f020001;
+        public static final int carlevarijs_thumb_land=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int rembrandt=0x7f020004;
+        public static final int rembrandt_thumb=0x7f020005;
+        public static final int rembrandt_thumb_land=0x7f020006;
     }
     public static final class id {
-        public static final int artist=0x7f0b0014;
-        public static final int date=0x7f0b0016;
-        public static final int description=0x7f0b001c;
-        public static final int dimensions=0x7f0b001a;
-        public static final int image=0x7f0b0010;
-        public static final int img_1=0x7f0b0001;
-        public static final int img_10=0x7f0b000e;
-        public static final int img_2=0x7f0b0002;
-        public static final int img_3=0x7f0b0004;
-        public static final int img_4=0x7f0b0005;
-        public static final int img_5=0x7f0b0007;
-        public static final int img_6=0x7f0b0008;
-        public static final int img_7=0x7f0b000a;
-        public static final int img_8=0x7f0b000b;
-        public static final int img_9=0x7f0b000d;
-        public static final int lb_artist=0x7f0b0013;
-        public static final int lb_date=0x7f0b0015;
-        public static final int lb_description=0x7f0b001b;
-        public static final int lb_dimensions=0x7f0b0019;
-        public static final int lb_place=0x7f0b0017;
-        public static final int lb_title=0x7f0b0011;
-        public static final int menu_settings=0x7f0b001d;
-        public static final int place=0x7f0b0018;
-        public static final int row1=0x7f0b0000;
+        public static final int artist=0x7f0b000a;
+        public static final int carlevarijs=0x7f0b0002;
+        public static final int date=0x7f0b000c;
+        public static final int description=0x7f0b0016;
+        public static final int dimensions=0x7f0b0012;
+        public static final int image=0x7f0b0006;
+        public static final int lb_artist=0x7f0b0009;
+        public static final int lb_date=0x7f0b000b;
+        public static final int lb_description=0x7f0b0015;
+        public static final int lb_dimensions=0x7f0b0011;
+        public static final int lb_medium=0x7f0b0013;
+        public static final int lb_nationality=0x7f0b000d;
+        public static final int lb_place=0x7f0b000f;
+        public static final int lb_title=0x7f0b0007;
+        public static final int medium=0x7f0b0014;
+        public static final int menu_credits=0x7f0b0017;
+        public static final int nationality=0x7f0b000e;
+        public static final int place=0x7f0b0010;
+        public static final int rembrandt=0x7f0b0004;
+        public static final int row1=0x7f0b0001;
         public static final int row2=0x7f0b0003;
-        public static final int row3=0x7f0b0006;
-        public static final int row4=0x7f0b0009;
-        public static final int row5=0x7f0b000c;
-        public static final int scrollview=0x7f0b000f;
-        public static final int title=0x7f0b0012;
+        public static final int scrollview=0x7f0b0005;
+        public static final int textview=0x7f0b0000;
+        public static final int title=0x7f0b0008;
     }
     public static final class integer {
         public static final int num_columns=0x7f070000;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_metadata=0x7f030001;
+        public static final int activity_credits=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_metadata=0x7f030002;
     }
     public static final class menu {
-        public static final int activity_main=0x7f0a0000;
-        public static final int activity_metadata=0x7f0a0001;
+        public static final int activity_credits=0x7f0a0000;
+        public static final int activity_main=0x7f0a0001;
+        public static final int activity_metadata=0x7f0a0002;
     }
     public static final class raw {
         public static final int config=0x7f050000;
@@ -105,7 +82,25 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f080000;
         public static final int approach=0x7f080003;
-        public static final int menu_settings=0x7f080001;
+        public static final int artist1=0x7f080005;
+        public static final int artist2=0x7f08000d;
+        public static final int credits=0x7f080015;
+        public static final int date1=0x7f080006;
+        public static final int date2=0x7f08000e;
+        public static final int description1=0x7f08000b;
+        public static final int description2=0x7f080013;
+        public static final int dimensions1=0x7f080009;
+        public static final int dimensions2=0x7f080011;
+        public static final int medium1=0x7f08000a;
+        public static final int medium2=0x7f080012;
+        public static final int menu_credits=0x7f080001;
+        public static final int nationality1=0x7f080007;
+        public static final int nationality2=0x7f08000f;
+        public static final int place1=0x7f080008;
+        public static final int place2=0x7f080010;
+        public static final int title1=0x7f080004;
+        public static final int title2=0x7f08000c;
+        public static final int title_activity_credits=0x7f080014;
         public static final int title_activity_metadata=0x7f080002;
     }
     public static final class style {

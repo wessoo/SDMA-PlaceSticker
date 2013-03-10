@@ -5,7 +5,6 @@ import io.socket.IOCallback;
 import io.socket.SocketIO;
 import io.socket.SocketIOException;
 
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import jp.co.isid.placesticker.lib.DevicePosition;
@@ -17,32 +16,25 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.wifi.WifiManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
-import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.BaseAdapter;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements IOCallback, PlaceStickerListener {
@@ -68,6 +60,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	private GridLayout gridlayout;
 	private LinearLayout linearlayout;
 	private ScrollView scrollview;
+	private TextView textview;
 	private Vibrator vibrator;
 	
 	private final Handler myHandler = new Handler();
@@ -80,28 +73,12 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	    addedThumbs = new ArrayList<ImageView>();
 	    
 	    thumbs = new ArrayList<ImageView>();
-	    thumbs.add((ImageView) findViewById(R.id.img_1));
-        thumbs.add((ImageView) findViewById(R.id.img_2));
-        thumbs.add((ImageView) findViewById(R.id.img_3));
-        thumbs.add((ImageView) findViewById(R.id.img_4));
-        thumbs.add((ImageView) findViewById(R.id.img_5));
-        thumbs.add((ImageView) findViewById(R.id.img_6));
-        thumbs.add((ImageView) findViewById(R.id.img_7));
-        thumbs.add((ImageView) findViewById(R.id.img_8));
-        thumbs.add((ImageView) findViewById(R.id.img_9));
-        thumbs.add((ImageView) findViewById(R.id.img_10));
+	    thumbs.add((ImageView) findViewById(R.id.carlevarijs));
+        thumbs.add((ImageView) findViewById(R.id.rembrandt));
 	    
         thumbIDs = new ArrayList<Integer>();
-        thumbIDs.add(R.drawable.img_1);
-        thumbIDs.add(R.drawable.img_2);
-        thumbIDs.add(R.drawable.img_3);
-        thumbIDs.add(R.drawable.img_4);
-        thumbIDs.add(R.drawable.img_5);
-        thumbIDs.add(R.drawable.img_6);
-        thumbIDs.add(R.drawable.img_7);
-        thumbIDs.add(R.drawable.img_8);
-        thumbIDs.add(R.drawable.img_9);
-        thumbIDs.add(R.drawable.img_10);
+        thumbIDs.add(R.drawable.carlevarijs);
+        thumbIDs.add(R.drawable.rembrandt);
 	    
         //turn on WiFi
         wifiManager = (WifiManager) this.getSystemService(this.WIFI_SERVICE);
@@ -109,9 +86,9 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
         	wifiManager.setWifiEnabled(true);
         }
         
-        scrollview = (ScrollView) findViewById(R.id.scrollview);
-	    //scrollview.setBackgroundColor(Color.BLACK);
-        //scrollview.setAdapter(new ImageAdapter(this));
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/AkzidenzGroteskBE-Bold.otf");
+        textview = (TextView) findViewById(R.id.textview);
+        textview.setTypeface(tf);
 	    
 	    scale = getResources().getDisplayMetrics().density;
 	    res = getResources();
@@ -127,8 +104,21 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.activity_main, menu);
+		getMenuInflater().inflate(R.menu.activity_main, menu);
+		
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+        case R.id.menu_credits:
+			Intent intent = new Intent(MainActivity.this, CreditsActivity.class);
+			startActivity(intent);
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+		}
 	}
 	
 	@Override
@@ -154,26 +144,6 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 
 	}
 	
-	/*@Override
-	protected void onStop() {
-		super.onStop();		
-		receiver.scanStop();
-	}
-	
-	@Override
-	protected void onRestart() {
-		super.onRestart();
-		
-		Toast.makeText(MainActivity.this, "onRestart() called" , Toast.LENGTH_SHORT).show();
-		
-		try {
-        	receiver.loadSettingFile(R.raw.config);
-			receiver.scanStart();
-		} catch (PlaceStickerException e) {
-			e.printStackTrace();
-		}
-	}*/
-	
 	public Runnable updateRunnable = new Runnable() {
     	public void run() {
     		updateUI();
@@ -182,7 +152,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
     
 	public void updateUI() {		
 		
-		if(!addedIDs.contains(imgNum)) {			
+		/*if(!addedIDs.contains(imgNum)) {			
 	        addedIDs.add(imgNum);
 	        
 			GridLayout.LayoutParams layoutparams = new GridLayout.LayoutParams();
@@ -207,7 +177,7 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	        addedThumbs.add(imageView); //add thumbnail to arraylist
 		} else {
 			Toast.makeText(MainActivity.this, "You have this image already" , Toast.LENGTH_SHORT).show();
-		}
+		}*/
     }
 	
 	private int dpToPx(float dp) {
@@ -224,7 +194,8 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		TableRow tl = (TableRow) approached_img.getParent();
 		tl.bringToFront();
 		approached_img.startAnimation(thumbGrow);
-		vibrator.vibrate(200);
+		long[] pattern = {0, 400, 200, 400};
+		vibrator.vibrate(pattern, -1);
 		thumbGrow.setAnimationListener(anim_listener);
 	}
 	
@@ -294,10 +265,9 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 	/* PLACESTICKER INHERITED METHODS */
 	@Override
 	public void onPositionChanged(DevicePosition position, int style) {
-		if(position != null){ //near a PlaceSticker
-			String psID = position.getNearestPlaceSticker().getId();
-			int psDistance = position.getNearestPlaceSticker().getDistance();
-			
+		if(position.getNearestPlaceSticker() != null){ //near a PlaceSticker
+			String psID = position.getNearestPlaceSticker(PlaceStickerReceiver.MEASURE_SPOT_PRECISE).getId();
+			int psDistance = position.getNearestPlaceSticker(PlaceStickerReceiver.MEASURE_SPOT_PRECISE).getDistance();
 			//Toast.makeText(MainActivity.this, "Approached image " + psID, Toast.LENGTH_SHORT).show();
 			
 			approachedWork(Integer.parseInt(psID));

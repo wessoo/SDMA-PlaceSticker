@@ -80,6 +80,24 @@
 	        android:paddingRight="10dp" />
 	    
 	    <TextView
+	        android:id="@+id/lb_nationality"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ffb2b2b2"
+	        android:textSize="13sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:text="Nationality" />
+	    <TextView
+	        android:id="@+id/nationality"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ff444444"
+	        android:textSize="16sp"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="10dp" />
+	    
+	    <TextView
 	        android:id="@+id/lb_place"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
@@ -108,6 +126,24 @@
 	        android:text="Dimensions" />
 	    <TextView
 	        android:id="@+id/dimensions"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ff444444"
+	        android:textSize="16sp"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="10dp" />
+	    
+	    <TextView
+	        android:id="@+id/lb_medium"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ffb2b2b2"
+	        android:textSize="13sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:text="Medium" />
+	    <TextView
+	        android:id="@+id/medium"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:textColor="#ff444444"

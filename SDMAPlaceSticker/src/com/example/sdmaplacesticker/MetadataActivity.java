@@ -1,5 +1,6 @@
 package com.example.sdmaplacesticker;
 
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -15,11 +16,15 @@ import org.xml.sax.XMLReader;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +32,8 @@ public class MetadataActivity extends Activity implements PlaceStickerListener {
 	Work data;
 	private int approached_index;
 	private ArrayList<Integer> mThumbIds;
+	private TextView lb_title;
+	private TextView title;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,39 +49,51 @@ public class MetadataActivity extends Activity implements PlaceStickerListener {
 		
 		//Build array of image IDs
 		mThumbIds = new ArrayList<Integer>();
+        mThumbIds.add(R.drawable.carlevarijs);
+        mThumbIds.add(R.drawable.rembrandt);
         
-        mThumbIds.add(R.drawable.img_1);
-        mThumbIds.add(R.drawable.img_2);
-        mThumbIds.add(R.drawable.img_3);
-        mThumbIds.add(R.drawable.img_4);
-        mThumbIds.add(R.drawable.img_5);
-        mThumbIds.add(R.drawable.img_6);
-        mThumbIds.add(R.drawable.img_7);
-        mThumbIds.add(R.drawable.img_8);
-        mThumbIds.add(R.drawable.img_9);
-        mThumbIds.add(R.drawable.img_10);
-        mThumbIds.add(R.drawable.img_11);
-        mThumbIds.add(R.drawable.img_12);
-        mThumbIds.add(R.drawable.img_13);
-        mThumbIds.add(R.drawable.img_14);
-        mThumbIds.add(R.drawable.img_15);
-        mThumbIds.add(R.drawable.img_16);
-        mThumbIds.add(R.drawable.img_17);
-        mThumbIds.add(R.drawable.img_18);
-        mThumbIds.add(R.drawable.img_19);
-        mThumbIds.add(R.drawable.img_20);
-        mThumbIds.add(R.drawable.img_21);
-        mThumbIds.add(R.drawable.img_22);
-        mThumbIds.add(R.drawable.img_23);
-        mThumbIds.add(R.drawable.img_24);
-        mThumbIds.add(R.drawable.img_25);
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/AkzidenzGroteskBE-Bold.otf");
+        
+        ImageView image = (ImageView) findViewById(R.id.image);
+		image.setImageResource(mThumbIds.get(approached_index));
+		
+		TextView title = (TextView) findViewById(R.id.title);
+		TextView artist = (TextView) findViewById(R.id.artist);
+		TextView date = (TextView) findViewById(R.id.date);
+		TextView place = (TextView) findViewById(R.id.place);
+		TextView dimensions = (TextView) findViewById(R.id.dimensions);
+		TextView description = (TextView) findViewById(R.id.description);		
+		TextView nationality = (TextView) findViewById(R.id.nationality);
+		TextView medium = (TextView) findViewById(R.id.medium);
+        
+        if(approached_index == 0) {
+			title.setText(getResources().getString(R.string.title1));
+			artist.setText(getResources().getString(R.string.artist1));
+			date.setText(getResources().getString(R.string.date1));
+			nationality.setText(getResources().getString(R.string.nationality1));
+			place.setText(getResources().getString(R.string.place1));
+			dimensions.setText(getResources().getString(R.string.dimensions1));
+			medium.setText(getResources().getString(R.string.medium1));
+			description.setText(getResources().getString(R.string.description1));
+		} else if(approached_index == 1) {
+			title.setText(getResources().getString(R.string.title2));
+			artist.setText(getResources().getString(R.string.artist2));
+			date.setText(getResources().getString(R.string.date2));
+			nationality.setText(getResources().getString(R.string.nationality2));
+			place.setText(getResources().getString(R.string.place2));
+			dimensions.setText(getResources().getString(R.string.dimensions2));
+			medium.setText(getResources().getString(R.string.medium2));
+			description.setText(getResources().getString(R.string.description2));
+		}
+        
 		
 		//Handle XML
-		new FetchTask().execute("http://sdma.bpoc.org:3001/metadata.xml");
+		//new FetchTask().execute("http://sdma.bpoc.org:3001/metadata.xml");
+        //new FetchTask().execute("android.resource://com.example.sdmaplacesticker/raw/metadata.xml");
 		
 		//Set alpha
-		ImageView image = (ImageView) findViewById(R.id.image);
-		image.setAlpha(0f);
+		/*ImageView image = (ImageView) findViewById(R.id.image);
+		image.setAlpha(0f);*/
 	}
 
 	@Override
@@ -110,8 +129,10 @@ public class MetadataActivity extends Activity implements PlaceStickerListener {
 				XMLReader xmlR = saxP.getXMLReader();
 				XMLHandler xmlHandler = new XMLHandler();
 				xmlR.setContentHandler(xmlHandler);
+				
+				//Uri path = Uri.parse("android.resource://com.example.sdmaplacesticker/raw/metadata.xml");
+				//xmlR.parse("android.resource://com.example.sdmaplacesticker/raw/metadata.xml");
 				xmlR.parse(new InputSource(new URL(url[0]).openStream()));
-				System.out.println("FLAG4.5");
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -123,45 +144,84 @@ public class MetadataActivity extends Activity implements PlaceStickerListener {
 		protected void onPostExecute(Work data) {
 			ImageView image = (ImageView) findViewById(R.id.image);
 			image.setImageResource(mThumbIds.get(approached_index));
-			ObjectAnimator anim = ObjectAnimator.ofFloat(image, "alpha", 0f, 1f);
+			/*ObjectAnimator anim = ObjectAnimator.ofFloat(image, "alpha", 0f, 1f);
 			anim.setDuration(300);
-			anim.start();
+			anim.start();*/
+			
+			Animation fadeImg = AnimationUtils.loadAnimation(MetadataActivity.this, R.anim.fade_img);
+			image.startAnimation(fadeImg);
 			
 			TextView title = (TextView) findViewById(R.id.title);
-			title.setText(data.getTitle().get(approached_index));
+			/*title.setText(data.getTitle().get(approached_index));
 			ObjectAnimator anim2 = ObjectAnimator.ofFloat(title, "alpha", 0f, 1f);
 			anim2.setDuration(300);
-			anim2.start();
+			anim2.start();*/
 			
 			TextView artist = (TextView) findViewById(R.id.artist);
-			artist.setText(data.getArtist().get(approached_index));
+			/*artist.setText(data.getArtist().get(approached_index));
 			ObjectAnimator anim3 = ObjectAnimator.ofFloat(artist, "alpha", 0f, 1f);
 			anim3.setDuration(300);
-			anim3.start();
+			anim3.start();*/
 			
 			TextView date = (TextView) findViewById(R.id.date);
-			date.setText(data.getDate().get(approached_index));
+			/*date.setText(data.getDate().get(approached_index));
 			ObjectAnimator anim4 = ObjectAnimator.ofFloat(date, "alpha", 0f, 1f);
 			anim4.setDuration(300);
-			anim4.start();
+			anim4.start();*/
 			
 			TextView place = (TextView) findViewById(R.id.place);
-			place.setText(data.getPlace().get(approached_index));
+			/*place.setText(data.getPlace().get(approached_index));
 			ObjectAnimator anim5 = ObjectAnimator.ofFloat(place, "alpha", 0f, 1f);
 			anim5.setDuration(300);
-			anim5.start();
+			anim5.start();*/
 			
 			TextView dimensions = (TextView) findViewById(R.id.dimensions);
-			dimensions.setText(data.getDimensions().get(approached_index));
+			/*dimensions.setText(data.getDimensions().get(approached_index));
 			ObjectAnimator anim6 = ObjectAnimator.ofFloat(dimensions, "alpha", 0f, 1f);
 			anim6.setDuration(300);
-			anim6.start();
+			anim6.start();*/
 			
 			TextView description = (TextView) findViewById(R.id.description);
-			description.setText(data.getDescription().get(approached_index));
+			/*if(approached_index == 0) {
+				description.setText(data.getDescription().get(approached_index));
+			} else if(approached_index == 1) {
+				description.setText(getResources().getString(R.string.description2));
+			}
 			ObjectAnimator anim7 = ObjectAnimator.ofFloat(description, "alpha", 0f, 1f);
 			anim7.setDuration(300);
-			anim7.start();
+			anim7.start();*/
+			
+			TextView nationality = (TextView) findViewById(R.id.nationality);
+			/*nationality.setText(data.getNationality().get(approached_index));
+			ObjectAnimator anim8 = ObjectAnimator.ofFloat(nationality, "alpha", 0f, 1f);
+			anim8.setDuration(300);
+			anim8.start();*/
+			
+			TextView medium = (TextView) findViewById(R.id.medium);
+			/*medium.setText(data.getMedium().get(approached_index));
+			ObjectAnimator anim9 = ObjectAnimator.ofFloat(medium, "alpha", 0f, 1f);
+			anim9.setDuration(300);
+			anim9.start();*/
+			
+			if(approached_index == 0) {
+				title.setText(getResources().getString(R.string.title1));
+				artist.setText(getResources().getString(R.string.artist1));
+				date.setText(getResources().getString(R.string.date1));
+				nationality.setText(getResources().getString(R.string.nationality1));
+				place.setText(getResources().getString(R.string.place1));
+				dimensions.setText(getResources().getString(R.string.dimensions1));
+				medium.setText(getResources().getString(R.string.medium1));
+				description.setText(getResources().getString(R.string.description1));
+			} else if(approached_index == 1) {
+				title.setText(getResources().getString(R.string.title2));
+				artist.setText(getResources().getString(R.string.artist2));
+				date.setText(getResources().getString(R.string.date2));
+				nationality.setText(getResources().getString(R.string.nationality2));
+				place.setText(getResources().getString(R.string.place2));
+				dimensions.setText(getResources().getString(R.string.dimensions2));
+				medium.setText(getResources().getString(R.string.medium2));
+				description.setText(getResources().getString(R.string.description2));
+			}
 		}
 		
 	}

@@ -38,7 +38,7 @@
 	        	    android:layout_marginTop="10dp"
 	        	    android:layout_marginBottom="15dp"
 	        	    android:layout_width="fill_parent"
-	        	    android:layout_height="200dp" />
+	        	    android:layout_height="140dp" />
 	        </TableRow>
 	        
 	        <TableRow  
@@ -51,7 +51,7 @@
 	        	    android:id="@+id/rembrandt"
 	        	    android:layout_marginBottom="10dp"
 	        	    android:layout_width="fill_parent"
-	        	    android:layout_height="200dp" />
+	        	    android:layout_height="140dp" />
 	        </TableRow>
 	        
 	    </TableLayout>

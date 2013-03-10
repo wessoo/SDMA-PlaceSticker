@@ -6,8 +6,10 @@ public class Work {
 	private ArrayList<String> title = new ArrayList<String>();
 	private ArrayList<String> artist = new ArrayList<String>();
 	private ArrayList<String> date = new ArrayList<String>();
+	private ArrayList<String> nationality = new ArrayList<String>();
 	private ArrayList<String> place = new ArrayList<String>();
 	private ArrayList<String> dimensions = new ArrayList<String>();
+	private ArrayList<String> medium = new ArrayList<String>();
 	private ArrayList<String> description = new ArrayList<String>();
 	
 	public ArrayList<String> getTitle() {
@@ -34,6 +36,14 @@ public class Work {
 		this.date.add(date);
 	}
 	
+	public ArrayList<String> getNationality() {
+		return nationality;
+	}
+	
+	public void setNationality(String nationality) {
+		this.nationality.add(nationality);
+	}
+	
 	public ArrayList<String> getPlace() {
 		return place;
 	}
@@ -48,6 +58,14 @@ public class Work {
 	
 	public void setDimensions(String dimensions) {
 		this.dimensions.add(dimensions);
+	}
+	
+	public ArrayList<String> getMedium() {
+		return medium;
+	}
+	
+	public void setMedium(String medium) {
+		this.medium.add(medium);
 	}
 	
 	public ArrayList<String> getDescription() {

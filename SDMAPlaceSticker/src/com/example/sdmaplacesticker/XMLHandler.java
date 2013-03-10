@@ -38,10 +38,14 @@ public class XMLHandler extends DefaultHandler {
 			data.setArtist(elementValue);
 		} else if (localName.equalsIgnoreCase("date")) {
 			data.setDate(elementValue);
+		} else if (localName.equalsIgnoreCase("nationality")) {
+			data.setNationality(elementValue);
 		} else if (localName.equalsIgnoreCase("place")) {
 			data.setPlace(elementValue);
 		} else if (localName.equalsIgnoreCase("dimensions")) {
 			data.setDimensions(elementValue);
+		} else if (localName.equalsIgnoreCase("medium")) {
+			data.setMedium(elementValue);
 		} else if (localName.equalsIgnoreCase("description")) {
 			data.setDescription(elementValue);
 		}
