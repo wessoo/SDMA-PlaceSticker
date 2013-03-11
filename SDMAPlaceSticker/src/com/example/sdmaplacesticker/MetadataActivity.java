@@ -52,10 +52,20 @@ public class MetadataActivity extends Activity implements PlaceStickerListener {
         mThumbIds.add(R.drawable.carlevarijs);
         mThumbIds.add(R.drawable.rembrandt);
         
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/AkzidenzGroteskBE-Bold.otf");
+        Typeface tfbold = Typeface.createFromAsset(getAssets(), "fonts/AkzidenzGroteskBE-Bold.otf");
+        Typeface tfreg = Typeface.createFromAsset(getAssets(), "fonts/Berthold Akzidenz Grotesk BE Light.ttf");
         
-        ImageView image = (ImageView) findViewById(R.id.image);
+		ImageView image = (ImageView) findViewById(R.id.image);
 		image.setImageResource(mThumbIds.get(approached_index));
+		
+		TextView lb_title = (TextView) findViewById(R.id.lb_title);
+		TextView lb_artist = (TextView) findViewById(R.id.lb_artist);
+		TextView lb_date = (TextView) findViewById(R.id.lb_date);
+		TextView lb_place = (TextView) findViewById(R.id.lb_place);
+		TextView lb_dimensions = (TextView) findViewById(R.id.lb_dimensions);
+		TextView lb_description = (TextView) findViewById(R.id.lb_description);		
+		TextView lb_nationality = (TextView) findViewById(R.id.lb_nationality);
+		TextView lb_medium = (TextView) findViewById(R.id.lb_medium);
 		
 		TextView title = (TextView) findViewById(R.id.title);
 		TextView artist = (TextView) findViewById(R.id.artist);
@@ -65,6 +75,23 @@ public class MetadataActivity extends Activity implements PlaceStickerListener {
 		TextView description = (TextView) findViewById(R.id.description);		
 		TextView nationality = (TextView) findViewById(R.id.nationality);
 		TextView medium = (TextView) findViewById(R.id.medium);
+		
+		title.setTypeface(tfreg);
+		lb_title.setTypeface(tfbold);
+		artist.setTypeface(tfreg);
+		lb_artist.setTypeface(tfbold);
+		date.setTypeface(tfreg);
+		lb_date.setTypeface(tfbold);
+		place.setTypeface(tfreg);
+		lb_place.setTypeface(tfbold);
+		dimensions.setTypeface(tfreg);
+		lb_dimensions.setTypeface(tfbold);
+		description.setTypeface(tfreg);
+		lb_description.setTypeface(tfbold);
+		nationality.setTypeface(tfreg);
+		lb_nationality.setTypeface(tfbold);
+		medium.setTypeface(tfreg);
+		lb_medium.setTypeface(tfbold);
         
         if(approached_index == 0) {
 			title.setText(getResources().getString(R.string.title1));

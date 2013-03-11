@@ -166,6 +166,7 @@
 	        android:layout_height="wrap_content"
 	        android:textColor="#ff444444"
 	        android:textSize="16sp"
+	        android:lineSpacingExtra="2dp"
 	        android:paddingLeft="15dp"
 	        android:paddingRight="10dp" />
 	    

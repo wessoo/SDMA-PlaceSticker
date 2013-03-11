@@ -15,7 +15,7 @@
 	        android:textSize="16sp"
 	        android:lineSpacingExtra="10dp"
 	        android:layout_marginTop="15dp"
-	        android:text="Can you find these artworks? When you do, open this app." />
+	        android:text="Open this app when you are near these paintings" />
 	    
 	    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	        android:layout_marginLeft="15dp"

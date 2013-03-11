@@ -19,6 +19,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -197,6 +200,12 @@ public class MainActivity extends Activity implements IOCallback, PlaceStickerLi
 		long[] pattern = {0, 400, 200, 400};
 		vibrator.vibrate(pattern, -1);
 		thumbGrow.setAnimationListener(anim_listener);
+		
+		try {
+	        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+	        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+	        r.play();
+	    } catch (Exception e) {}
 	}
 	
 	Animation.AnimationListener anim_listener = new Animation.AnimationListener() {
