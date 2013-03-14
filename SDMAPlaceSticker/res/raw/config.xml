@@ -1,4 +1,4 @@
 ﻿<config>
 	<placesticker id="1" name="042PlaceSticker" x="180" y ="20" floor="1F" />
-	<placesticker id="2" name="033PlaceSticker" x="180" y ="120" floor="1F" />
+	<placesticker id="2" name="032PlaceSticker" x="180" y ="120" floor="1F" />
 </config>

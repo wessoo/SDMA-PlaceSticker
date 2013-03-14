@@ -10,16 +10,20 @@
     <TextView
 	        android:id="@+id/textview"
 	        android:gravity="center_horizontal"
-	        android:layout_width="match_parent"
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:textSize="24sp"
+	        android:textSize="16sp"
 	        android:lineSpacingExtra="10dp"
-	        android:layout_marginTop="40dp"
-	        android:text="Open this app when you are near these paintings" />
+	        android:layout_marginTop="15dp"
+	        android:text="@string/approach" />
+    
+	<!-- <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
+	    android:layout_height="fill_parent"
+	    android:layout_width="fill_parent" > -->
 	    
 	    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	        android:layout_marginLeft="15dp"
-	        android:layout_marginRight="15dp"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="10dp"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content" >
 	        
@@ -29,21 +33,29 @@
 	        android:layout_width="match_parent"  
 	        android:gravity="center_horizontal">
 	        	<ImageView
-	        	    android:src="@drawable/carlevarijs_thumb_land"
+	        	    android:src="@drawable/carlevarijs_thumb"
 	        	    android:id="@+id/carlevarijs"
+	        	    android:layout_marginTop="10dp"
 	        	    android:layout_marginBottom="15dp"
-	        	    android:layout_marginRight="15dp"
-	        	    android:layout_width="560dp"
-	        	    android:layout_height="match_parent" />
+	        	    android:layout_width="fill_parent"
+	        	    android:layout_height="200dp" />
+	        </TableRow>
+	        
+	        <TableRow  
+	        android:id="@+id/row2"  
+	        android:layout_height="wrap_content"  
+	        android:layout_width="match_parent"  
+	        android:gravity="center_horizontal">
 	        	<ImageView
-	        	    android:src="@drawable/rembrandt_thumb_land"
+	        	    android:src="@drawable/rembrandt_thumb"
 	        	    android:id="@+id/rembrandt"
-	        	    android:layout_marginBottom="15dp"
-	        	    android:layout_marginLeft="15dp"
-	        	    android:layout_width="560dp"
-	        	    android:layout_height="match_parent" />
-	        </TableRow>	        
+	        	    android:layout_marginBottom="10dp"
+	        	    android:layout_width="fill_parent"
+	        	    android:layout_height="200dp" />
+	        </TableRow>
 	        
 	    </TableLayout>
+	    
+	<!-- </ScrollView> -->
 
 </LinearLayout>

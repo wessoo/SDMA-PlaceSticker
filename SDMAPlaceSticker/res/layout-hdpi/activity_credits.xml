@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativelayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="#FFFFFF"
+    tools:context=".CreditsActivity" >
+	
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
+	    android:layout_height="fill_parent"
+	    android:layout_width="fill_parent" >
+	    
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >"
+        
+	        <TextView 
+	            android:gravity="center_horizontal"
+	            android:id="@+id/credits_title"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:textColor="#888888"
+	            android:textSize="25sp"
+	            android:layout_marginBottom="5dp"
+	            android:text="About" />"
+		    
+		    <TextView
+		        android:id="@+id/credits"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textColor="#888888"
+		        android:gravity="center_horizontal"
+		        android:textSize="17sp"
+		        android:lineSpacingExtra="2dp"
+		        android:text="@string/credits" />
+		    
+		    <ImageView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="70dp"
+		        android:layout_gravity="center_horizontal"
+		        android:src="@drawable/logo_bpoc"
+		        android:id="@+id/img_bpoc" />
+		    <TextView
+		        android:id="@+id/bpoc"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="center_horizontal"
+		        android:textColor="#888888"
+		        android:textSize="17sp"
+		        android:lineSpacingExtra="2dp"
+		        android:text="@string/bpoc" />
+		    
+		    <ImageView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="70dp"
+		        android:layout_gravity="center_horizontal"
+		        android:src="@drawable/logo_isid"
+		        android:id="@+id/img_isid" />
+		    <TextView
+		        android:id="@+id/isid"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="center_horizontal"
+		        android:textColor="#888888"
+		        android:textSize="17sp"
+		        android:lineSpacingExtra="2dp"
+		        android:text="@string/isid" />
+		    
+		    <ImageView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="70dp"
+		        android:layout_gravity="center_horizontal"
+		        android:src="@drawable/logo_nict"
+		        android:id="@+id/img_nict" />
+		    <TextView
+		        android:id="@+id/nict"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		       	android:gravity="center_horizontal"
+		       	android:textColor="#888888"
+		       	android:textSize="17sp"
+		        android:lineSpacingExtra="2dp"
+		        android:text="@string/nict" />
+		    
+		    <ImageView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="70dp"
+		        android:layout_gravity="center_horizontal"
+		        android:src="@drawable/logo_prime"
+		        android:id="@+id/img_prime" />
+		    <TextView
+		        android:id="@+id/prime"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="center_horizontal"
+		        android:textColor="#888888"
+		        android:textSize="17sp"
+		        android:lineSpacingExtra="2dp"
+		        android:text="@string/prime" />
+		    
+		    <ImageView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="70dp"
+		        android:layout_gravity="center_horizontal"
+		        android:src="@drawable/logo_timken"
+		        android:id="@+id/img_timken" />
+		    <TextView
+		        android:id="@+id/timken"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="center_horizontal"
+		        android:textColor="#888888"
+		        android:textSize="17sp"
+		        android:lineSpacingExtra="2dp"
+		        android:text="@string/timken" />
+		    
+		    <TextView
+		        android:id="@+id/funding"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="center_horizontal"
+		        android:textColor="#888888"
+		        android:textSize="17sp"
+		        android:lineSpacingExtra="2dp"
+		        android:text="@string/funding" />
+		    
+	    </LinearLayout>
+	</ScrollView>
+
+</RelativeLayout>

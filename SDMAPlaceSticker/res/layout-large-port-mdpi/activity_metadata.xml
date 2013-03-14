@@ -1,0 +1,174 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#ffffffff" >
+	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:tools="http://schemas.android.com/tools"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:paddingBottom="16dp"
+	    tools:context=".MetadataActivity" >
+        
+	    <ImageView
+	        android:id="@+id/image"
+	        android:contentDescription="This is an image"
+	        android:layout_width="match_parent"
+	        android:layout_height="500dp"
+	        android:paddingTop="10dp"
+	        android:paddingRight="10dp"
+	        android:paddingBottom="10dp"
+	        android:paddingLeft="10dp"
+	        android:background="#ffb2b2b2" />
+	    
+	    <TextView
+	        android:id="@+id/lb_title"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ffb2b2b2"
+	        android:textSize="13sp"
+	        android:paddingTop="5dp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:text="Title" />
+	    <TextView
+	        android:id="@+id/title"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ff444444"
+	        android:textSize="20sp"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="10dp"
+	        android:text="" />
+	    
+	    <TextView
+	        android:id="@+id/lb_artist"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ffb2b2b2"
+	        android:textSize="13sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:text="Artist" />
+	    <TextView
+	        android:id="@+id/artist"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ff444444"
+	        android:textSize="20sp"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="10dp" />
+	    
+	    <TextView
+	        android:id="@+id/lb_date"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ffb2b2b2"
+	        android:textSize="13sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:text="Date" />
+	    <TextView
+	        android:id="@+id/date"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ff444444"
+	        android:textSize="20sp"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="10dp" />
+	    
+	    <TextView
+	        android:id="@+id/lb_nationality"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ffb2b2b2"
+	        android:textSize="13sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:text="Nationality" />
+	    <TextView
+	        android:id="@+id/nationality"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ff444444"
+	        android:textSize="20sp"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="10dp" />
+	    
+	    <TextView
+	        android:id="@+id/lb_place"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ffb2b2b2"
+	        android:textSize="13sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:text="Place" />
+	    <TextView
+	        android:id="@+id/place"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ff444444"
+	        android:textSize="20sp"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="10dp" />
+	    
+	    <TextView
+	        android:id="@+id/lb_dimensions"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ffb2b2b2"
+	        android:textSize="13sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:text="Dimensions" />
+	    <TextView
+	        android:id="@+id/dimensions"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ff444444"
+	        android:textSize="20sp"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="10dp" />
+	    
+	    <TextView
+	        android:id="@+id/lb_medium"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ffb2b2b2"
+	        android:textSize="13sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:text="Medium" />
+	    <TextView
+	        android:id="@+id/medium"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ff444444"
+	        android:textSize="20sp"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="10dp" />
+	    
+	    <TextView
+	        android:id="@+id/lb_description"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ffb2b2b2"
+	        android:textSize="13sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:text="Description" />
+	    <TextView
+	        android:id="@+id/description"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="#ff444444"
+	        android:textSize="20sp"
+	        android:paddingLeft="15dp"
+	        android:paddingRight="10dp" />
+	    
+	</LinearLayout>
+	
+</ScrollView>

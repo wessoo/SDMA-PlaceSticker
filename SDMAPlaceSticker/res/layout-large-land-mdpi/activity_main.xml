@@ -33,14 +33,14 @@
 	        	    android:id="@+id/carlevarijs"
 	        	    android:layout_marginBottom="15dp"
 	        	    android:layout_marginRight="15dp"
-	        	    android:layout_width="560dp"
+	        	    android:layout_width="250dp"
 	        	    android:layout_height="match_parent" />
 	        	<ImageView
 	        	    android:src="@drawable/rembrandt_thumb_land"
 	        	    android:id="@+id/rembrandt"
 	        	    android:layout_marginBottom="15dp"
 	        	    android:layout_marginLeft="15dp"
-	        	    android:layout_width="560dp"
+	        	    android:layout_width="250dp"
 	        	    android:layout_height="match_parent" />
 	        </TableRow>	        
 	        

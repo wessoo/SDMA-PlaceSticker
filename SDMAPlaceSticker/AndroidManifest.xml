@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sdmaplacesticker"
+    package="com.timken.timkenplacesticker"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -22,7 +22,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.sdmaplacesticker.MainActivity"
+            android:name="com.timken.timkenplacesticker.MainActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" >
@@ -33,16 +33,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.sdmaplacesticker.MetadataActivity"
+            android:name="com.timken.timkenplacesticker.MetadataActivity"
             android:label="@string/title_activity_metadata"
-            android:parentActivityName="com.example.sdmaplacesticker"
+            android:parentActivityName="com.timken.timkenplacesticker"
             android:theme="@android:style/Theme.NoTitleBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.sdmaplacesticker" />
+                android:value="com.timken.timkenplacesticker" />
         </activity>
         <activity
-            android:name="com.example.sdmaplacesticker.CreditsActivity"
+            android:name="com.timken.timkenplacesticker.CreditsActivity"
             android:label="@string/title_activity_credits"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
